@@ -3,6 +3,7 @@ from datetime import timedelta
 from typing import List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, status
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from app import models, schemas
@@ -112,6 +113,34 @@ async def get_current_user(
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.get("/items/{item_id}")
+def get_item_error(item_id: int):
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={
+            "error": {
+                "code": "not_found",
+                "message": f"Item {item_id} not found",
+            }
+        },
+    )
+
+
+@app.post("/items")
+def create_item_error(name: str = Query("", max_length=255)):
+    if not name.strip():
+        return JSONResponse(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            content={
+                "error": {
+                    "code": "validation_error",
+                    "message": "name must not be empty",
+                }
+            },
+        )
+    return {"id": 1, "name": name}
 
 
 # Authentication endpoints
