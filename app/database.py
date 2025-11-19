@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.core.secrets import get_secret
+from app.models import Base  # noqa: F401
 
 try:
     SQLALCHEMY_DATABASE_URL = get_secret("DATABASE_URL")
