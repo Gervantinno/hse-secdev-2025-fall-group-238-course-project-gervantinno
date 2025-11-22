@@ -36,11 +36,11 @@ jobs:
 
       - name: Hadolint
         run: |
-          docker run --rm -i hadolint/hadolint:v2.12.0 \
-            --ignore DL3006 \
-            --ignore DL3008 \
-            --ignore DL3013 \
-            < Dockerfile
+          docker run --rm \
+            -v "${{ github.workspace }}:/lint" \
+            hadolint/hadolint:v2.12.0 \
+            --ignore DL3006 --ignore DL3008 --ignore DL3013 \
+            /lint/Dockerfile
 
       - name: Build runtime image
         run: docker build --target runtime -t recipe-manager:${{ github.sha }} .
