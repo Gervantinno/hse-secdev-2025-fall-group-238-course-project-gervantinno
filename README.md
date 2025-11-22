@@ -88,8 +88,8 @@ Badge добавится автоматически после загрузки 
 # собрать оптимизированный runtime-слой
 docker build --target runtime -t recipe-manager:local .
 
-# убедиться, что процесс не под root
-docker run --rm recipe-manager:local id -u
+# убедиться, что процесс не под root (должно вернуть число != 0)
+docker run --rm --entrypoint /bin/sh recipe-manager:local -c "id -u"
 
 # проверить healthcheck и API
 docker run -d --name recipe-api -p 8000:8000 recipe-manager:local
