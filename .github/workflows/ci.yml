@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 permissions:
@@ -15,17 +14,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+
   tests:
-    name: Test (py${{ matrix.python-version }})
+    name: Tests (py${{ matrix.python-version }})
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.11", "3.12"]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -37,9 +37,6 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-py${{ matrix.python-version }}-pip-${{ hashFiles('requirements.txt', 'requirements-dev.txt', 'pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-py${{ matrix.python-version }}-pip-
-            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
@@ -53,10 +50,11 @@ jobs:
           black --check .
           isort --check-only .
 
-      - name: Tests with coverage
+      - name: Tests
         run: |
           mkdir -p reports/htmlcov
-          coverage run -m pytest -q --maxfail=1 --disable-warnings --junitxml=reports/junit-py${{ matrix.python-version }}.xml
+          coverage run -m pytest -q --maxfail=1 --disable-warnings \
+            --junitxml=reports/junit-py${{ matrix.python-version }}.xml
           coverage xml -o reports/coverage-py${{ matrix.python-version }}.xml
           coverage html -d reports/htmlcov/py${{ matrix.python-version }}
 
@@ -67,41 +65,45 @@ jobs:
           name: reports-py${{ matrix.python-version }}
           path: reports/**
 
+
   deploy:
-    name: Package & Stage Deploy
+    name: Package & Deploy
     needs: tests
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
     timeout-minutes: 25
+
     env:
       STAGING_DB_URL: ${{ secrets.STAGING_DB_URL }}
       STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Login to GHCR
         if: ${{ secrets.GHCR_TOKEN != '' }}
-        env:
-          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
-          echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
-      - name: Build runtime image
-        run: docker build --target runtime -t ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} .
+      - name: Build image with cache
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          target: runtime
+          tags: ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}
+          push: ${{ secrets.GHCR_TOKEN != '' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: Push image (if token configured)
-        if: ${{ secrets.GHCR_TOKEN != '' }}
-        run: docker push ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}
-
-      - name: Save docker artifact (fallback)
+      - name: Save Image (fallback)
         if: ${{ secrets.GHCR_TOKEN == '' }}
         run: |
           mkdir -p release
-          docker save ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} | gzip > release/recipe-manager-${{ github.sha }}.tar.gz
+          docker save ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} \
+            | gzip > release/recipe-manager-${{ github.sha }}.tar.gz
 
       - name: Upload docker artifact
         if: always()
@@ -112,20 +114,25 @@ jobs:
 
       - name: Mask secrets
         run: |
-          if [ -n "${STAGING_DB_URL}" ]; then echo "::add-mask::${STAGING_DB_URL}"; fi
-          if [ -n "${STAGING_API_KEY}" ]; then echo "::add-mask::${STAGING_API_KEY}"; fi
+          [ -n "${STAGING_DB_URL}" ] && echo "::add-mask::${STAGING_DB_URL}"
+          [ -n "${STAGING_API_KEY}" ] && echo "::add-mask::${STAGING_API_KEY}"
 
-      - name: Deploy to staging (mock)
+      - name: Deploy to staging
         env:
           DB_URL: ${{ env.STAGING_DB_URL }}
           API_KEY: ${{ env.STAGING_API_KEY }}
         run: |
-          echo "Deploying image ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} to staging..."
+          echo "Deploying image ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}..."
+
           if [ -z "${DB_URL}" ] || [ -z "${API_KEY}" ]; then
-            echo "Staging secrets are not configured. Skipping call."
-          else
-            curl -s -X POST https://staging.example.com/deploy \
-              -H "Authorization: Bearer ${API_KEY}" \
-              -H "Content-Type: application/json" \
-              -d "{\"image\":\"ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}\",\"db_url\":\"${DB_URL}\"}"
+            echo "Staging secrets missing — skipping deploy"
+            exit 0
           fi
+
+          curl -s -X POST https://staging.example.com/deploy \
+            -H "Authorization: Bearer ${API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"image\":\"ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}\",
+              \"db_url\":\"${DB_URL}\"
+            }"
