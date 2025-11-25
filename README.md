@@ -1,6 +1,6 @@
 # Recipe Manager API
 
-![CI](https://github.com/hse-secdev-2025-fall-group-238-course-project-gervantinno/hse-secdev-2025-fall-group-238-course-project-gervantinno/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Gervantinno/hse-secdev-2025-fall-group-238-course-project-gervantinno/actions/actions/workflows/ci.yml/badge.svg)
 
 Менеджер рецептов с ингредиентами и планированием питания (HSE SecDev 2025).
 
