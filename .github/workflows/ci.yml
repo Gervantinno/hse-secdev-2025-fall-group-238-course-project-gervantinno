@@ -85,7 +85,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Login to GHCR
-        if: secrets.GHCR_TOKEN != ''
+        if: ${{ secrets.GHCR_TOKEN != '' }}
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
@@ -95,11 +95,11 @@ jobs:
         run: docker build --target runtime -t ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} .
 
       - name: Push image (if token configured)
-        if: secrets.GHCR_TOKEN != ''
+        if: ${{ secrets.GHCR_TOKEN != '' }}
         run: docker push ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}
 
       - name: Save docker artifact (fallback)
-        if: secrets.GHCR_TOKEN == ''
+        if: ${{ secrets.GHCR_TOKEN == '' }}
         run: |
           mkdir -p release
           docker save ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} | gzip > release/recipe-manager-${{ github.sha }}.tar.gz
