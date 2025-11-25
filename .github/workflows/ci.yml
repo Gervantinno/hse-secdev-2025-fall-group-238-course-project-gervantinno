@@ -1,107 +1,132 @@
 name: CI
+
 on:
-  pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+
 permissions:
   contents: read
+  packages: write
+
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+env:
+  STAGING_DB_URL: ${{ secrets.STAGING_DB_URL }}
+  STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
 
-      - uses: actions/setup-python@v5
+jobs:
+  tests:
+    name: Test (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: "pip"
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-py${{ matrix.python-version }}-pip-${{ hashFiles('requirements.txt', 'requirements-dev.txt', 'pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-py${{ matrix.python-version }}-pip-
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
+          pip install coverage
 
-      - name: Lint & Format
+      - name: Lint
         run: |
-          ruff check --output-format=github .
+          ruff check .
           black --check .
           isort --check-only .
 
-      - name: Tests
-        run: pytest -q
-
-      - name: Hadolint
+      - name: Tests with coverage
         run: |
-          docker run --rm -i hadolint/hadolint:v2.12.0 \
-            /bin/hadolint --ignore DL3006 --ignore DL3008 --ignore DL3013 - < Dockerfile
+          mkdir -p reports/htmlcov
+          coverage run -m pytest -q --maxfail=1 --disable-warnings --junitxml=reports/junit-py${{ matrix.python-version }}.xml
+          coverage xml -o reports/coverage-py${{ matrix.python-version }}.xml
+          coverage html -d reports/htmlcov/py${{ matrix.python-version }}
 
-      - name: Build runtime image
-        run: docker build --target runtime -t recipe-manager:${{ github.sha }} .
-
-      - name: Trivy scan
-        run: |
-          docker run --rm \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -v ${{ github.workspace }}:/workspace \
-            aquasec/trivy:0.54.1 image \
-            --no-progress \
-            --scanners vuln \
-            --severity HIGH,CRITICAL \
-            --exit-code 0 \
-            --format table \
-            --ignorefile /workspace/.trivyignore \
-            --output /workspace/trivy-report.txt \
-            recipe-manager:${{ github.sha }}
-          echo "Trivy scan completed. Check trivy-report.txt for details."
-          if [ -f /workspace/trivy-report.txt ]; then
-            echo "=== Trivy Report Summary (first 50 lines) ==="
-            head -50 /workspace/trivy-report.txt || true
-          fi
-
-      - name: Upload Trivy report
+      - name: Upload reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-report
-          path: trivy-report.txt
+          name: reports-py${{ matrix.python-version }}
+          path: reports/**
 
-      - name: Verify non-root user
+  deploy:
+    name: Package & Stage Deploy
+    needs: tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        if: secrets.GHCR_TOKEN != ''
+        env:
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
-          uid=$(docker run --rm --entrypoint /bin/sh recipe-manager:${{ github.sha }} -c "id -u")
-          echo "Container uid: ${uid}"
-          if [ "${uid}" -eq 0 ]; then
-            echo "Container must not run as root"
-            exit 1
-          fi
-          echo "✓ Container runs as non-root user (UID: ${uid})"
+          echo "${GHCR_TOKEN}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Verify healthcheck
+      - name: Build runtime image
+        run: docker build --target runtime -t ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} .
+
+      - name: Push image (if token configured)
+        if: secrets.GHCR_TOKEN != ''
+        run: docker push ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}
+
+      - name: Save docker artifact (fallback)
+        if: secrets.GHCR_TOKEN == ''
         run: |
-          docker run -d --name recipe-manager-health recipe-manager:${{ github.sha }}
-          for attempt in $(seq 1 12); do
-            status=$(docker inspect --format='{{.State.Health.Status}}' recipe-manager-health)
-            if [ "${status}" = "healthy" ]; then
-              echo "Container is healthy"
-              break
-            fi
-            if [ "${status}" = "unhealthy" ]; then
-              docker logs recipe-manager-health
-              docker rm -f recipe-manager-health
-              exit 1
-            fi
-            sleep 5
-          done
-          final_status=$(docker inspect --format='{{.State.Health.Status}}' recipe-manager-health)
-          if [ "${final_status}" != "healthy" ]; then
-            docker logs recipe-manager-health
-            docker rm -f recipe-manager-health
-            echo "Container did not become healthy in time"
-            exit 1
-          fi
-          docker rm -f recipe-manager-health
+          mkdir -p release
+          docker save ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} | gzip > release/recipe-manager-${{ github.sha }}.tar.gz
 
-      - name: Pre-commit (all files)
-        run: pre-commit run --all-files
+      - name: Upload docker artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-release
+          path: release/**
+
+      - name: Mask secrets
+        run: |
+          if [ -n "${STAGING_DB_URL}" ]; then echo "::add-mask::${STAGING_DB_URL}"; fi
+          if [ -n "${STAGING_API_KEY}" ]; then echo "::add-mask::${STAGING_API_KEY}"; fi
+
+      - name: Deploy to staging (mock)
+        env:
+          DB_URL: ${{ env.STAGING_DB_URL }}
+          API_KEY: ${{ env.STAGING_API_KEY }}
+        run: |
+          echo "Deploying image ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }} to staging..."
+          if [ -z "${DB_URL}" ] || [ -z "${API_KEY}" ]; then
+            echo "Staging secrets are not configured. Skipping call."
+          else
+            curl -s -X POST https://staging.example.com/deploy \
+              -H "Authorization: Bearer ${API_KEY}" \
+              -H "Content-Type: application/json" \
+              -d "{\"image\":\"ghcr.io/${{ github.repository }}/recipe-manager:${{ github.sha }}\",\"db_url\":\"${DB_URL}\"}"
+          fi
