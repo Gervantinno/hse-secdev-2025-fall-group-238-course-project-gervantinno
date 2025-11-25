@@ -1,8 +1,38 @@
 services:
-  app:
-    build: .
-    ports:
-      - "8000:8000"
+  api:
+    build:
+      context: .
+      target: runtime
+    image: recipe-manager:local
+    env_file:
+      - .env
     environment:
-      - PYTHONUNBUFFERED=1
-    profiles: ["dev"]
+      - DATABASE_URL=${DATABASE_URL:-sqlite:////data/recipes.db}
+      - UVICORN_WORKERS=${UVICORN_WORKERS:-2}
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://127.0.0.1:8000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    volumes:
+      - app-data:/data
+    restart: unless-stopped
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  app-data:

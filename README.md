@@ -76,14 +76,38 @@ pytest -q
 В репозитории настроен workflow **CI** (GitHub Actions) — required check для `main`.
 Badge добавится автоматически после загрузки шаблона в GitHub.
 
-## Контейнеры
+## Контейнеризация и харднинг (P07)
+
+- **Базовый образ**: `python:3.12.7-slim` (multi-stage). На runtime-слое только runtime-зависимости, curl и приложение.
+- **Безопасность**: non-root пользователь `app`, `no-new-privileges`, `cap_drop: [ALL]`, read-only root FS + tmpfs `/tmp`, отдельный volume `/data` для БД, healthcheck → `GET /health`.
+- **Проверки**: CI прогоняет Hadolint, собирает образ, сканирует его Trivy (артефакт `trivy-report.txt`), убеждается, что `id -u != 0` внутри контейнера, и ждёт `healthy` от встроенного `HEALTHCHECK`.
+
+### Локальный запуск образа
 
 ```bash
-docker build -t secdev-app .
-docker run --rm -p 8000:8000 secdev-app
-# или
-docker compose up --build
+# собрать оптимизированный runtime-слой
+docker build --target runtime -t recipe-manager:local .
+
+# убедиться, что процесс не под root (должно вернуть число != 0)
+docker run --rm --entrypoint /bin/sh recipe-manager:local -c "id -u"
+
+# проверить healthcheck и API
+docker run -d --name recipe-api -p 8000:8000 recipe-manager:local
+docker inspect --format='{{.State.Health.Status}}' recipe-api
+curl http://127.0.0.1:8000/health
+docker rm -f recipe-api
 ```
+
+### Docker Compose
+
+```bash
+cp .env.example .env
+docker compose --env-file .env up --build
+```
+
+Compose поднимает сервис `api` с healthcheck, tempfs `/tmp`, volume `app-data:/data` (для SQLite или миграций) и пробрасывает `${APP_PORT:-8000}` наружу.
+
+Доп. материалы: `docs/P07_container.md`.
 
 ## Эндпойнты
 

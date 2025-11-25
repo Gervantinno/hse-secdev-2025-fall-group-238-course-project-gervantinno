@@ -34,5 +34,74 @@ jobs:
       - name: Tests
         run: pytest -q
 
+      - name: Hadolint
+        run: |
+          docker run --rm -i hadolint/hadolint:v2.12.0 \
+            /bin/hadolint --ignore DL3006 --ignore DL3008 --ignore DL3013 - < Dockerfile
+
+      - name: Build runtime image
+        run: docker build --target runtime -t recipe-manager:${{ github.sha }} .
+
+      - name: Trivy scan
+        run: |
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v ${{ github.workspace }}:/workspace \
+            aquasec/trivy:0.54.1 image \
+            --no-progress \
+            --scanners vuln \
+            --severity HIGH,CRITICAL \
+            --exit-code 0 \
+            --format table \
+            --ignorefile /workspace/.trivyignore \
+            --output /workspace/trivy-report.txt \
+            recipe-manager:${{ github.sha }}
+          echo "Trivy scan completed. Check trivy-report.txt for details."
+          if [ -f /workspace/trivy-report.txt ]; then
+            echo "=== Trivy Report Summary (first 50 lines) ==="
+            head -50 /workspace/trivy-report.txt || true
+          fi
+
+      - name: Upload Trivy report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy-report.txt
+
+      - name: Verify non-root user
+        run: |
+          uid=$(docker run --rm --entrypoint /bin/sh recipe-manager:${{ github.sha }} -c "id -u")
+          echo "Container uid: ${uid}"
+          if [ "${uid}" -eq 0 ]; then
+            echo "Container must not run as root"
+            exit 1
+          fi
+          echo "✓ Container runs as non-root user (UID: ${uid})"
+
+      - name: Verify healthcheck
+        run: |
+          docker run -d --name recipe-manager-health recipe-manager:${{ github.sha }}
+          for attempt in $(seq 1 12); do
+            status=$(docker inspect --format='{{.State.Health.Status}}' recipe-manager-health)
+            if [ "${status}" = "healthy" ]; then
+              echo "Container is healthy"
+              break
+            fi
+            if [ "${status}" = "unhealthy" ]; then
+              docker logs recipe-manager-health
+              docker rm -f recipe-manager-health
+              exit 1
+            fi
+            sleep 5
+          done
+          final_status=$(docker inspect --format='{{.State.Health.Status}}' recipe-manager-health)
+          if [ "${final_status}" != "healthy" ]; then
+            docker logs recipe-manager-health
+            docker rm -f recipe-manager-health
+            echo "Container did not become healthy in time"
+            exit 1
+          fi
+          docker rm -f recipe-manager-health
+
       - name: Pre-commit (all files)
         run: pre-commit run --all-files
