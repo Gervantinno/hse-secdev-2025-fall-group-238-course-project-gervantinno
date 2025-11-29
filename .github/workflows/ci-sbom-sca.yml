@@ -7,6 +7,13 @@ on:
       - "**/*.py"
       - "requirements*.txt"
       - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "requirements*.txt"
+      - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
 
 permissions:
   contents: read
