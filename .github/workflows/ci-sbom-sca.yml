@@ -35,53 +35,21 @@ jobs:
         run: |
           docker run --rm -v $PWD:/work -w /work anchore/grype:latest \
             sbom:/work/EVIDENCE/P09/sbom.json -o json > EVIDENCE/P09/sca_report.json || true
-          
-          # Generate summary - try jq first, fallback to Python
-          echo "# SCA Summary" > EVIDENCE/P09/sca_summary.md
-          echo "" >> EVIDENCE/P09/sca_summary.md
-          echo "## Vulnerability Count by Severity" >> EVIDENCE/P09/sca_summary.md
-          echo "" >> EVIDENCE/P09/sca_summary.md
-          
+
+      - name: Generate SCA Summary
+        run: |
           if command -v jq &> /dev/null; then
+            echo "# SCA Summary" > EVIDENCE/P09/sca_summary.md
+            echo "" >> EVIDENCE/P09/sca_summary.md
+            echo "## Vulnerability Count by Severity" >> EVIDENCE/P09/sca_summary.md
+            echo "" >> EVIDENCE/P09/sca_summary.md
             jq '[.matches[].vulnerability.severity] | group_by(.) | map({(.[0]): length}) | add' \
-              EVIDENCE/P09/sca_report.json >> EVIDENCE/P09/sca_summary.md 2>/dev/null || true
+              EVIDENCE/P09/sca_report.json >> EVIDENCE/P09/sca_summary.md 2>/dev/null || echo "No vulnerabilities found." >> EVIDENCE/P09/sca_summary.md
             total=$(jq '.matches | length' EVIDENCE/P09/sca_report.json 2>/dev/null || echo "0")
             echo "" >> EVIDENCE/P09/sca_summary.md
             echo "## Total Vulnerabilities: $total" >> EVIDENCE/P09/sca_summary.md
           else
-            python3 << 'EOF'
-            import json
-            import sys
-            
-            try:
-                with open('EVIDENCE/P09/sca_report.json', 'r') as f:
-                    data = json.load(f)
-                
-                severity_counts = {}
-                matches = data.get('matches', [])
-                
-                for match in matches:
-                    vuln = match.get('vulnerability', {})
-                    severity = vuln.get('severity', 'Unknown')
-                    severity_counts[severity] = severity_counts.get(severity, 0) + 1
-                
-                with open('EVIDENCE/P09/sca_summary.md', 'a') as f:
-                    if severity_counts:
-                        for severity in ['Critical', 'High', 'Medium', 'Low', 'Negligible', 'Unknown']:
-                            count = severity_counts.get(severity, 0)
-                            if count > 0:
-                                f.write(f"- **{severity}**: {count}\n")
-                    else:
-                        f.write("No vulnerabilities found.\n")
-                    
-                    f.write(f"\n## Total Vulnerabilities: {len(matches)}\n")
-                
-                print("Summary generated successfully")
-            except Exception as e:
-                print(f"Error generating summary: {e}", file=sys.stderr)
-                with open('EVIDENCE/P09/sca_summary.md', 'a') as f:
-                    f.write("Error generating summary. See sca_report.json for details.\n")
-            EOF
+            python3 scripts/generate_sca_summary.py
           fi
 
       - name: Upload SBOM/SCA evidence
