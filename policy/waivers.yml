@@ -12,16 +12,17 @@
 # - expires_at: дата истечения waiver (YYYY-MM-DD)
 # - approved_by: email утверждающего
 
-waivers: []
-
-# Пример записи (закомментирован):
-# waivers:
-#   - id: "CVE-2024-XXXX"
-#     package: "example-lib"
-#     version: "1.2.3"
-#     severity: "High"
-#     reason: "Транзитивная зависимость; нет доступного фикса; компонент не используется в критических путях кода."
-#     issue: "https://github.com/<org>/<repo>/issues/123"
-#     expires_at: "2025-12-31"
-#     approved_by: "tutor@example.org"
-
+waivers:
+  - id: "CVE-2024-23342"
+    package: "ecdsa"
+    version: "0.19.1"
+    severity: "High"
+    reason: |
+      Транзитивная зависимость через python-jose[cryptography]. Уязвимость Minerva attack на P-256 кривой.
+      Нет доступного фикса (state: not-fixed по данным SCA). EPSS низкий (0.00622).
+      Компонент не используется напрямую в коде: приложение использует HS256 для JWT токенов,
+      а не ECDSA. Уязвимость требует специфических условий для эксплуатации (timing attack на P-256).
+      Планируется мониторинг обновлений python-jose и переход на альтернативные библиотеки при необходимости.
+    issue: "https://github.com/tlsfuzzer/python-ecdsa/security/advisories/GHSA-wj6h-64fc-37mp"
+    expires_at: "2025-06-30"
+    approved_by: "tutor@example.org"

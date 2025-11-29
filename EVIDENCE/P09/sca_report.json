@@ -1,1 +1,2520 @@
-{"matches":[{"vulnerability":{"id":"GHSA-6c5p-j8vq-pqhj","dataSource":"https://github.com/advisories/GHSA-6c5p-j8vq-pqhj","namespace":"github:language:python","severity":"Critical","urls":[],"description":"python-jose algorithm confusion with OpenSSH ECDSA keys","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N","metrics":{"baseScore":7.4,"exploitabilityScore":2.3,"impactScore":5.2},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33663","epss":0.00684,"percentile":0.70866,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33663","cwe":"CWE-327","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.4.0"],"state":"fixed","available":[{"version":"3.4.0","date":"2025-02-19","kind":"first-observed"}]},"advisories":[],"risk":0.56088},"relatedVulnerabilities":[{"id":"CVE-2024-33663","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-33663","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/mpdavis/python-jose/issues/346","https://www.vicarius.io/vsociety/posts/algorithm-confusion-in-python-jose-cve-2024-33663"],"description":"python-jose through 3.3.0 has algorithm confusion with OpenSSH ECDSA keys and other key formats. This is similar to CVE-2022-29217.","cvss":[{"source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N","metrics":{"baseScore":6.5,"exploitabilityScore":3.9,"impactScore":2.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33663","epss":0.00684,"percentile":0.70866,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33663","cwe":"CWE-327","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-jose","version":"3.3.0"}},"found":{"vulnerabilityID":"GHSA-6c5p-j8vq-pqhj","versionConstraint":"<3.4.0 (python)"},"fix":{"suggestedVersion":"3.4.0"}}],"artifact":{"id":"7cd324cf00d675e4","name":"python-jose","version":"3.3.0","type":"python","locations":[{"path":"/requirements.txt","accessPath":"/requirements.txt","annotations":{"evidence":"primary"}}],"language":"python","licenses":[],"cpes":["cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"],"purl":"pkg:pypi/python-jose@3.3.0","upstreams":[]}},{"vulnerability":{"id":"GHSA-6c5p-j8vq-pqhj","dataSource":"https://github.com/advisories/GHSA-6c5p-j8vq-pqhj","namespace":"github:language:python","severity":"Critical","urls":[],"description":"python-jose algorithm confusion with OpenSSH ECDSA keys","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N","metrics":{"baseScore":7.4,"exploitabilityScore":2.3,"impactScore":5.2},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33663","epss":0.00684,"percentile":0.70866,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33663","cwe":"CWE-327","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.4.0"],"state":"fixed","available":[{"version":"3.4.0","date":"2025-02-19","kind":"first-observed"}]},"advisories":[],"risk":0.56088},"relatedVulnerabilities":[{"id":"CVE-2024-33663","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-33663","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/mpdavis/python-jose/issues/346","https://www.vicarius.io/vsociety/posts/algorithm-confusion-in-python-jose-cve-2024-33663"],"description":"python-jose through 3.3.0 has algorithm confusion with OpenSSH ECDSA keys and other key formats. This is similar to CVE-2022-29217.","cvss":[{"source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N","metrics":{"baseScore":6.5,"exploitabilityScore":3.9,"impactScore":2.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33663","epss":0.00684,"percentile":0.70866,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33663","cwe":"CWE-327","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-jose","version":"3.3.0"}},"found":{"vulnerabilityID":"GHSA-6c5p-j8vq-pqhj","versionConstraint":"<3.4.0 (python)"},"fix":{"suggestedVersion":"3.4.0"}}],"artifact":{"id":"a45b7dac320b2066","name":"python-jose","version":"3.3.0","type":"python","locations":[{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD","annotations":{"evidence":"supporting"}},{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["MIT"],"cpes":["cpe:2.3:a:mike_philip_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike-philip-davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike-philip-davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"],"purl":"pkg:pypi/python-jose@3.3.0","upstreams":[]}},{"vulnerability":{"id":"GHSA-wj6h-64fc-37mp","dataSource":"https://github.com/advisories/GHSA-wj6h-64fc-37mp","namespace":"github:language:python","severity":"High","urls":[],"description":"Minerva timing attack on P-256 in python-ecdsa","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N","metrics":{"baseScore":7.4,"exploitabilityScore":2.3,"impactScore":5.2},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-23342","epss":0.00622,"percentile":0.69275,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-23342","cwe":"CWE-203","source":"security-advisories@github.com","type":"Primary"},{"cve":"CVE-2024-23342","cwe":"CWE-208","source":"security-advisories@github.com","type":"Primary"},{"cve":"CVE-2024-23342","cwe":"CWE-385","source":"security-advisories@github.com","type":"Primary"}],"fix":{"versions":[],"state":"not-fixed"},"advisories":[],"risk":0.46338999999999997},"relatedVulnerabilities":[{"id":"CVE-2024-23342","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-23342","namespace":"nvd:cpe","severity":"High","urls":["https://github.com/tlsfuzzer/python-ecdsa/blob/master/SECURITY.md","https://github.com/tlsfuzzer/python-ecdsa/security/advisories/GHSA-wj6h-64fc-37mp","https://minerva.crocs.fi.muni.cz/","https://securitypitfalls.wordpress.com/2018/08/03/constant-time-compare-in-python/"],"description":"The `ecdsa` PyPI package is a pure Python implementation of ECC (Elliptic Curve Cryptography) with support for ECDSA (Elliptic Curve Digital Signature Algorithm), EdDSA (Edwards-curve Digital Signature Algorithm) and ECDH (Elliptic Curve Diffie-Hellman). Versions 0.18.0 and prior are vulnerable to the Minerva attack. As of time of publication, no known patched version exists.","cvss":[{"source":"nvd@nist.gov","type":"Primary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N","metrics":{"baseScore":7.4,"exploitabilityScore":2.3,"impactScore":5.2},"vendorMetadata":{}},{"source":"security-advisories@github.com","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N","metrics":{"baseScore":7.4,"exploitabilityScore":2.3,"impactScore":5.2},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-23342","epss":0.00622,"percentile":0.69275,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-23342","cwe":"CWE-203","source":"security-advisories@github.com","type":"Primary"},{"cve":"CVE-2024-23342","cwe":"CWE-208","source":"security-advisories@github.com","type":"Primary"},{"cve":"CVE-2024-23342","cwe":"CWE-385","source":"security-advisories@github.com","type":"Primary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"ecdsa","version":"0.19.1"}},"found":{"vulnerabilityID":"GHSA-wj6h-64fc-37mp","versionConstraint":">=0 (python)"}}],"artifact":{"id":"9bcf4b39b9fff122","name":"ecdsa","version":"0.19.1","type":"python","locations":[{"path":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/RECORD","annotations":{"evidence":"supporting"}},{"path":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/top_level.txt","accessPath":"/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/top_level.txt","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["MIT"],"cpes":["cpe:2.3:a:tlsfuzzer:ecdsa:0.19.1:*:*:*:*:python:*:*"],"purl":"pkg:pypi/ecdsa@0.19.1","upstreams":[]}},{"vulnerability":{"id":"GHSA-59g5-xgcq-4qw3","dataSource":"https://github.com/advisories/GHSA-59g5-xgcq-4qw3","namespace":"github:language:python","severity":"High","urls":[],"description":"Denial of service (DoS) via deformation `multipart/form-data` boundary","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H","metrics":{"baseScore":7.5,"exploitabilityScore":3.9,"impactScore":3.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-53981","epss":0.00346,"percentile":0.56483,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-53981","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}],"fix":{"versions":["0.0.18"],"state":"fixed","available":[{"version":"0.0.18","date":"2024-12-03","kind":"first-observed"}]},"advisories":[],"risk":0.2595},"relatedVulnerabilities":[{"id":"CVE-2024-53981","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-53981","namespace":"nvd:cpe","severity":"High","urls":["https://github.com/Kludex/python-multipart/commit/c4fe4d3cebc08c660e57dd709af1ffa7059b3177","https://github.com/Kludex/python-multipart/security/advisories/GHSA-59g5-xgcq-4qw3"],"description":"python-multipart is a streaming multipart parser for Python. When parsing form data, python-multipart skips line breaks (CR \\r or LF \\n) in front of the first boundary and any tailing bytes after the last boundary. This happens one byte at a time and emits a log event each time, which may cause excessive logging for certain inputs. An attacker could abuse this by sending a malicious request with lots of data before the first or after the last boundary, causing high CPU load and stalling the processing thread for a significant amount of time. In case of ASGI application, this could stall the event loop and prevent other requests from being processed, resulting in a denial of service (DoS). This vulnerability is fixed in 0.0.18.","cvss":[{"source":"security-advisories@github.com","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H","metrics":{"baseScore":7.5,"exploitabilityScore":3.9,"impactScore":3.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-53981","epss":0.00346,"percentile":0.56483,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-53981","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-multipart","version":"0.0.9"}},"found":{"vulnerabilityID":"GHSA-59g5-xgcq-4qw3","versionConstraint":"<0.0.18 (python)"},"fix":{"suggestedVersion":"0.0.18"}}],"artifact":{"id":"ebbb99363f4e5605","name":"python-multipart","version":"0.0.9","type":"python","locations":[{"path":"/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/RECORD","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["Apache-2.0"],"cpes":["cpe:2.3:a:fastapiexpert:python-multipart:0.0.9:*:*:*:*:python:*:*"],"purl":"pkg:pypi/python-multipart@0.0.9","upstreams":[]}},{"vulnerability":{"id":"GHSA-59g5-xgcq-4qw3","dataSource":"https://github.com/advisories/GHSA-59g5-xgcq-4qw3","namespace":"github:language:python","severity":"High","urls":[],"description":"Denial of service (DoS) via deformation `multipart/form-data` boundary","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H","metrics":{"baseScore":7.5,"exploitabilityScore":3.9,"impactScore":3.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-53981","epss":0.00346,"percentile":0.56483,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-53981","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}],"fix":{"versions":["0.0.18"],"state":"fixed","available":[{"version":"0.0.18","date":"2024-12-03","kind":"first-observed"}]},"advisories":[],"risk":0.2595},"relatedVulnerabilities":[{"id":"CVE-2024-53981","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-53981","namespace":"nvd:cpe","severity":"High","urls":["https://github.com/Kludex/python-multipart/commit/c4fe4d3cebc08c660e57dd709af1ffa7059b3177","https://github.com/Kludex/python-multipart/security/advisories/GHSA-59g5-xgcq-4qw3"],"description":"python-multipart is a streaming multipart parser for Python. When parsing form data, python-multipart skips line breaks (CR \\r or LF \\n) in front of the first boundary and any tailing bytes after the last boundary. This happens one byte at a time and emits a log event each time, which may cause excessive logging for certain inputs. An attacker could abuse this by sending a malicious request with lots of data before the first or after the last boundary, causing high CPU load and stalling the processing thread for a significant amount of time. In case of ASGI application, this could stall the event loop and prevent other requests from being processed, resulting in a denial of service (DoS). This vulnerability is fixed in 0.0.18.","cvss":[{"source":"security-advisories@github.com","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H","metrics":{"baseScore":7.5,"exploitabilityScore":3.9,"impactScore":3.6},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-53981","epss":0.00346,"percentile":0.56483,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-53981","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-multipart","version":"0.0.9"}},"found":{"vulnerabilityID":"GHSA-59g5-xgcq-4qw3","versionConstraint":"<0.0.18 (python)"},"fix":{"suggestedVersion":"0.0.18"}}],"artifact":{"id":"f531b70722afe41a","name":"python-multipart","version":"0.0.9","type":"python","locations":[{"path":"/requirements.txt","accessPath":"/requirements.txt","annotations":{"evidence":"primary"}}],"language":"python","licenses":[],"cpes":["cpe:2.3:a:fastapiexpert:python-multipart:0.0.9:*:*:*:*:python:*:*"],"purl":"pkg:pypi/python-multipart@0.0.9","upstreams":[]}},{"vulnerability":{"id":"GHSA-cjwg-qfpm-7377","dataSource":"https://github.com/advisories/GHSA-cjwg-qfpm-7377","namespace":"github:language:python","severity":"Medium","urls":[],"description":"python-jose denial of service via compressed JWE content","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33664","epss":0.00194,"percentile":0.41496,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33664","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.4.0"],"state":"fixed","available":[{"version":"3.4.0","date":"2025-02-19","kind":"first-observed"}]},"advisories":[],"risk":0.09991000000000001},"relatedVulnerabilities":[{"id":"CVE-2024-33664","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-33664","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/mpdavis/python-jose/issues/344","https://github.com/mpdavis/python-jose/pull/345","https://www.vicarius.io/vsociety/posts/jwt-bomb-in-python-jose-cve-2024-33664"],"description":"python-jose through 3.3.0 allows attackers to cause a denial of service (resource consumption) during a decode via a crafted JSON Web Encryption (JWE) token with a high compression ratio, aka a \"JWT bomb.\" This is similar to CVE-2024-21319.","cvss":[{"source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33664","epss":0.00194,"percentile":0.41496,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33664","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-jose","version":"3.3.0"}},"found":{"vulnerabilityID":"GHSA-cjwg-qfpm-7377","versionConstraint":"<3.4.0 (python)"},"fix":{"suggestedVersion":"3.4.0"}}],"artifact":{"id":"a45b7dac320b2066","name":"python-jose","version":"3.3.0","type":"python","locations":[{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD","annotations":{"evidence":"supporting"}},{"path":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt","accessPath":"/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["MIT"],"cpes":["cpe:2.3:a:mike_philip_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike-philip-davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike-philip-davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:mike_philip_davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:michael_davis:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"],"purl":"pkg:pypi/python-jose@3.3.0","upstreams":[]}},{"vulnerability":{"id":"GHSA-cjwg-qfpm-7377","dataSource":"https://github.com/advisories/GHSA-cjwg-qfpm-7377","namespace":"github:language:python","severity":"Medium","urls":[],"description":"python-jose denial of service via compressed JWE content","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33664","epss":0.00194,"percentile":0.41496,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33664","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.4.0"],"state":"fixed","available":[{"version":"3.4.0","date":"2025-02-19","kind":"first-observed"}]},"advisories":[],"risk":0.09991000000000001},"relatedVulnerabilities":[{"id":"CVE-2024-33664","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-33664","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/mpdavis/python-jose/issues/344","https://github.com/mpdavis/python-jose/pull/345","https://www.vicarius.io/vsociety/posts/jwt-bomb-in-python-jose-cve-2024-33664"],"description":"python-jose through 3.3.0 allows attackers to cause a denial of service (resource consumption) during a decode via a crafted JSON Web Encryption (JWE) token with a high compression ratio, aka a \"JWT bomb.\" This is similar to CVE-2024-21319.","cvss":[{"source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-33664","epss":0.00194,"percentile":0.41496,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-33664","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"python-jose","version":"3.3.0"}},"found":{"vulnerabilityID":"GHSA-cjwg-qfpm-7377","versionConstraint":"<3.4.0 (python)"},"fix":{"suggestedVersion":"3.4.0"}}],"artifact":{"id":"7cd324cf00d675e4","name":"python-jose","version":"3.3.0","type":"python","locations":[{"path":"/requirements.txt","accessPath":"/requirements.txt","annotations":{"evidence":"primary"}}],"language":"python","licenses":[],"cpes":["cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*","cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"],"purl":"pkg:pypi/python-jose@3.3.0","upstreams":[]}},{"vulnerability":{"id":"GHSA-f96h-pmfr-66vw","dataSource":"https://github.com/advisories/GHSA-f96h-pmfr-66vw","namespace":"github:language:python","severity":"High","urls":[],"description":"Starlette Denial of service (DoS) via multipart/form-data","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N","metrics":{"baseScore":0,"exploitabilityScore":3.9,"impactScore":0},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-47874","epss":0.00092,"percentile":0.26413,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-47874","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}],"fix":{"versions":["0.40.0"],"state":"fixed","available":[{"version":"0.40.0","date":"2024-10-16","kind":"first-observed"}]},"advisories":[],"risk":0.069},"relatedVulnerabilities":[{"id":"CVE-2024-47874","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-47874","namespace":"nvd:cpe","severity":"High","urls":["https://github.com/encode/starlette/commit/fd038f3070c302bff17ef7d173dbb0b007617733","https://github.com/encode/starlette/security/advisories/GHSA-f96h-pmfr-66vw"],"description":"Starlette is an Asynchronous Server Gateway Interface (ASGI) framework/toolkit. Prior to version 0.40.0, Starlette treats `multipart/form-data` parts without a `filename` as text form fields and buffers those in byte strings with no size limit. This allows an attacker to upload arbitrary large form fields and cause Starlette to both slow down significantly due to excessive memory allocations and copy operations, and also consume more and more memory until the server starts swapping and grinds to a halt, or the OS terminates the server process with an OOM error. Uploading multiple such requests in parallel may be enough to render a service practically unusable, even if reasonable request size limits are enforced by a reverse proxy in front of Starlette. This Denial of service (DoS) vulnerability affects all applications built with Starlette (or FastAPI) accepting form requests. Verison 0.40.0 fixes this issue.","cvss":[{"source":"security-advisories@github.com","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":8.7},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-47874","epss":0.00092,"percentile":0.26413,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-47874","cwe":"CWE-770","source":"security-advisories@github.com","type":"Secondary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"starlette","version":"0.38.6"}},"found":{"vulnerabilityID":"GHSA-f96h-pmfr-66vw","versionConstraint":"<0.40.0 (python)"},"fix":{"suggestedVersion":"0.40.0"}}],"artifact":{"id":"9b8f60a89cd09a1d","name":"starlette","version":"0.38.6","type":"python","locations":[{"path":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["BSD-3-Clause"],"cpes":["cpe:2.3:a:encode:starlette:0.38.6:*:*:*:*:python:*:*"],"purl":"pkg:pypi/starlette@0.38.6","upstreams":[]}},{"vulnerability":{"id":"CVE-2025-8291","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-8291","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/python/cpython/commit/162997bb70e067668c039700141770687bc8f267","https://github.com/python/cpython/commit/1d29afb0d6218aa8fb5e1e4a6133a4778d89bb46","https://github.com/python/cpython/commit/333d4a6f4967d3ace91492a39ededbcf3faa76a6","https://github.com/python/cpython/commit/76437ac248ad8ca44e9bf697b02b1e2241df2196","https://github.com/python/cpython/commit/8392b2f0d35678407d9ce7d95655a5b77de161b4","https://github.com/python/cpython/commit/bca11ae7d575d87ed93f5dd6a313be6246e3e388","https://github.com/python/cpython/commit/d11e69d6203080e3ec450446bfed0516727b85c3","https://github.com/python/cpython/issues/139700","https://github.com/python/cpython/pull/139702","https://mail.python.org/archives/list/security-announce@python.org/thread/QECOPWMTH4VPPJAXAH2BGTA4XADOP62G/","https://github.com/google/security-research/security/advisories/GHSA-hhv7-p4pg-wm6p","https://github.com/psf/advisory-database/blob/main/advisories/python/PSF-2025-12.json"],"description":"The 'zipfile' module would not check the validity of the ZIP64 End of\nCentral Directory (EOCD) Locator record offset value would not be used to\nlocate the ZIP64 EOCD record, instead the ZIP64 EOCD record would be\nassumed to be the previous record in the ZIP archive. This could be abused\nto create ZIP archives that are handled differently by the 'zipfile' module\ncompared to other ZIP implementations.\n\n\nRemediation maintains this behavior, but checks that the offset specified\nin the ZIP64 EOCD Locator record matches the expected value.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N","metrics":{"baseScore":4.3,"exploitabilityScore":2.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-8291","epss":0.00135,"percentile":0.33976,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-8291","cwe":"CWE-1285","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.9.24","3.10.19","3.11.14","3.12.12","3.14.1"],"state":"fixed","available":[{"version":"3.9.24","date":"2025-10-10","kind":"first-observed"},{"version":"3.10.19","date":"2025-10-10","kind":"first-observed"},{"version":"3.11.14","date":"2025-10-10","kind":"first-observed"},{"version":"3.12.12","date":"2025-10-10","kind":"first-observed"},{"version":"3.14.1","date":"2025-10-10","kind":"first-observed"}]},"advisories":[],"risk":0.062775},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2025-8291","versionConstraint":"< 3.9.24,>= 3.10.0, < 3.10.19,>= 3.11.0, < 3.11.14,>= 3.12.0, < 3.12.12,>= 3.13.0a1, < 3.14.1 (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]},"fix":{"suggestedVersion":"3.14.1"}}],"artifact":{"id":"8836c9166fefe953","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/pythonw.exe","accessPath":"/.venv/Scripts/pythonw.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}},{"vulnerability":{"id":"CVE-2025-8291","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-8291","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/python/cpython/commit/162997bb70e067668c039700141770687bc8f267","https://github.com/python/cpython/commit/1d29afb0d6218aa8fb5e1e4a6133a4778d89bb46","https://github.com/python/cpython/commit/333d4a6f4967d3ace91492a39ededbcf3faa76a6","https://github.com/python/cpython/commit/76437ac248ad8ca44e9bf697b02b1e2241df2196","https://github.com/python/cpython/commit/8392b2f0d35678407d9ce7d95655a5b77de161b4","https://github.com/python/cpython/commit/bca11ae7d575d87ed93f5dd6a313be6246e3e388","https://github.com/python/cpython/commit/d11e69d6203080e3ec450446bfed0516727b85c3","https://github.com/python/cpython/issues/139700","https://github.com/python/cpython/pull/139702","https://mail.python.org/archives/list/security-announce@python.org/thread/QECOPWMTH4VPPJAXAH2BGTA4XADOP62G/","https://github.com/google/security-research/security/advisories/GHSA-hhv7-p4pg-wm6p","https://github.com/psf/advisory-database/blob/main/advisories/python/PSF-2025-12.json"],"description":"The 'zipfile' module would not check the validity of the ZIP64 End of\nCentral Directory (EOCD) Locator record offset value would not be used to\nlocate the ZIP64 EOCD record, instead the ZIP64 EOCD record would be\nassumed to be the previous record in the ZIP archive. This could be abused\nto create ZIP archives that are handled differently by the 'zipfile' module\ncompared to other ZIP implementations.\n\n\nRemediation maintains this behavior, but checks that the offset specified\nin the ZIP64 EOCD Locator record matches the expected value.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N","metrics":{"baseScore":4.3,"exploitabilityScore":2.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-8291","epss":0.00135,"percentile":0.33976,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-8291","cwe":"CWE-1285","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.9.24","3.10.19","3.11.14","3.12.12","3.14.1"],"state":"fixed","available":[{"version":"3.9.24","date":"2025-10-10","kind":"first-observed"},{"version":"3.10.19","date":"2025-10-10","kind":"first-observed"},{"version":"3.11.14","date":"2025-10-10","kind":"first-observed"},{"version":"3.12.12","date":"2025-10-10","kind":"first-observed"},{"version":"3.14.1","date":"2025-10-10","kind":"first-observed"}]},"advisories":[],"risk":0.062775},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2025-8291","versionConstraint":"< 3.9.24,>= 3.10.0, < 3.10.19,>= 3.11.0, < 3.11.14,>= 3.12.0, < 3.12.12,>= 3.13.0a1, < 3.14.1 (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]},"fix":{"suggestedVersion":"3.14.1"}}],"artifact":{"id":"27ccbacb716d4e24","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/python.exe","accessPath":"/.venv/Scripts/python.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}},{"vulnerability":{"id":"CVE-2024-3220","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-3220","namespace":"nvd:cpe","severity":"Low","urls":["https://mail.python.org/archives/list/security-announce@python.org/thread/CDXW34ND2LSAOYAR5N6UNONP4ZBX4D6R/","http://www.openwall.com/lists/oss-security/2025/02/14/8","https://security.netapp.com/advisory/ntap-20250314-0001/"],"description":"There is a defect in the CPython standard library module тАЬmimetypesтАЭ where on Windows the default list of known file locations are writable meaning other users can create invalid files to cause MemoryError to be raised on Python runtime startup or have file extensions be interpreted as the incorrect file type.\n\nThis defect is caused by the default locations of Linux and macOS platforms (such as тАЬ/etc/mime.typesтАЭ) also being used on Windows, where they are user-writable locations (тАЬC:\\etc\\mime.typesтАЭ).\n\nTo work-around this issue a user can call mimetypes.init() with an empty list (тАЬ[]тАЭ) on Windows platforms to avoid using the default list of known file locations.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":2.3},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-3220","epss":0.00203,"percentile":0.42574,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-3220","cwe":"CWE-426","source":"cna@python.org","type":"Secondary"}],"fix":{"versions":[],"state":""},"advisories":[],"risk":0.053795},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2024-3220","versionConstraint":"none (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]}}],"artifact":{"id":"27ccbacb716d4e24","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/python.exe","accessPath":"/.venv/Scripts/python.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}},{"vulnerability":{"id":"CVE-2024-3220","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2024-3220","namespace":"nvd:cpe","severity":"Low","urls":["https://mail.python.org/archives/list/security-announce@python.org/thread/CDXW34ND2LSAOYAR5N6UNONP4ZBX4D6R/","http://www.openwall.com/lists/oss-security/2025/02/14/8","https://security.netapp.com/advisory/ntap-20250314-0001/"],"description":"There is a defect in the CPython standard library module тАЬmimetypesтАЭ where on Windows the default list of known file locations are writable meaning other users can create invalid files to cause MemoryError to be raised on Python runtime startup or have file extensions be interpreted as the incorrect file type.\n\nThis defect is caused by the default locations of Linux and macOS platforms (such as тАЬ/etc/mime.typesтАЭ) also being used on Windows, where they are user-writable locations (тАЬC:\\etc\\mime.typesтАЭ).\n\nTo work-around this issue a user can call mimetypes.init() with an empty list (тАЬ[]тАЭ) on Windows platforms to avoid using the default list of known file locations.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":2.3},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2024-3220","epss":0.00203,"percentile":0.42574,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2024-3220","cwe":"CWE-426","source":"cna@python.org","type":"Secondary"}],"fix":{"versions":[],"state":""},"advisories":[],"risk":0.053795},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2024-3220","versionConstraint":"none (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]}}],"artifact":{"id":"8836c9166fefe953","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/pythonw.exe","accessPath":"/.venv/Scripts/pythonw.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}},{"vulnerability":{"id":"GHSA-2c2j-9gv5-cj73","dataSource":"https://github.com/advisories/GHSA-2c2j-9gv5-cj73","namespace":"github:language:python","severity":"Medium","urls":[],"description":"Starlette has possible denial-of-service vector when parsing large files in multipart forms","cvss":[{"type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-54121","epss":0.00087,"percentile":0.25415,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-54121","cwe":"CWE-770","source":"security-advisories@github.com","type":"Primary"}],"fix":{"versions":["0.47.2"],"state":"fixed","available":[{"version":"0.47.2","date":"2025-07-22","kind":"first-observed"}]},"advisories":[],"risk":0.044805000000000005},"relatedVulnerabilities":[{"id":"CVE-2025-54121","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-54121","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/encode/starlette/blob/fa5355442753f794965ae1af0f87f9fec1b9a3de/starlette/datastructures.py#L436C5-L447C14","https://github.com/encode/starlette/commit/9f7ec2eb512fcc3fe90b43cb9dd9e1d08696bec1","https://github.com/encode/starlette/discussions/2927#discussioncomment-13721403","https://github.com/encode/starlette/security/advisories/GHSA-2c2j-9gv5-cj73"],"description":"Starlette is a lightweight ASGI (Asynchronous Server Gateway Interface) framework/toolkit, designed for building async web services in Python. In versions 0.47.1 and below, when parsing a multi-part form with large files (greater than the default max spool size) starlette will block the main thread to roll the file over to disk. This blocks the event thread which means the application can't accept new connections. The UploadFile code has a minor bug where instead of just checking for self._in_memory, the logic should also check if the additional bytes will cause a rollover. The vulnerability is fixed in version 0.47.2.","cvss":[{"source":"security-advisories@github.com","type":"Secondary","version":"3.1","vector":"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L","metrics":{"baseScore":5.3,"exploitabilityScore":3.9,"impactScore":1.5},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-54121","epss":0.00087,"percentile":0.25415,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-54121","cwe":"CWE-770","source":"security-advisories@github.com","type":"Primary"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"starlette","version":"0.38.6"}},"found":{"vulnerabilityID":"GHSA-2c2j-9gv5-cj73","versionConstraint":"<0.47.2 (python)"},"fix":{"suggestedVersion":"0.47.2"}}],"artifact":{"id":"9b8f60a89cd09a1d","name":"starlette","version":"0.38.6","type":"python","locations":[{"path":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["BSD-3-Clause"],"cpes":["cpe:2.3:a:encode:starlette:0.38.6:*:*:*:*:python:*:*"],"purl":"pkg:pypi/starlette@0.38.6","upstreams":[]}},{"vulnerability":{"id":"GHSA-4xh5-x5gv-qwph","dataSource":"https://github.com/advisories/GHSA-4xh5-x5gv-qwph","namespace":"github:language:python","severity":"Medium","urls":[],"description":"pip's fallback tar extraction doesn't check symbolic links point to extraction directory","cvss":[],"epss":[{"cve":"CVE-2025-8869","epss":0.0002,"percentile":0.0407,"date":"2025-11-26"}],"fix":{"versions":["25.3"],"state":"fixed","available":[{"version":"25.3","date":"2025-10-28","kind":"first-observed"}]},"advisories":[],"risk":0.01},"relatedVulnerabilities":[{"id":"CVE-2025-8869","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-8869","namespace":"nvd:cpe","severity":"Medium","urls":["https://github.com/pypa/pip/pull/13550","https://mail.python.org/archives/list/security-announce@python.org/thread/IF5A3GCJY3VH7BVHJKOWOJFKTW7VFQEN/","https://lists.debian.org/debian-lts-announce/2025/10/msg00028.html"],"description":"When extracting a tar archive pip may not check symbolic links point into the extraction directory if the tarfile module doesn't implement PEP 706.\nNote that upgrading pip to a \"fixed\" version for this vulnerability doesn't fix all known vulnerabilities that are remediated by using a Python version that implements PEP 706.\n\nNote that this is a vulnerability in pip's fallback implementation of tar extraction for Python versions that don't implement PEP 706\nand therefore are not secure to all vulnerabilities in the Python 'tarfile' module. If you're using a Python version that implements PEP 706\nthen pip doesn't use the \"vulnerable\" fallback code.\n\nMitigations include upgrading to a version of pip that includes the fix, upgrading to a Python version that implements PEP 706 (Python >=3.9.17, >=3.10.12, >=3.11.4, or >=3.12),\napplying the linked patch, or inspecting source distributions (sdists) before installation as is already a best-practice.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":5.9},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-8869","epss":0.0002,"percentile":0.0407,"date":"2025-11-26"}]}],"matchDetails":[{"type":"exact-direct-match","matcher":"python-matcher","searchedBy":{"language":"python","namespace":"github:language:python","package":{"name":"pip","version":"25.2"}},"found":{"vulnerabilityID":"GHSA-4xh5-x5gv-qwph","versionConstraint":"<=25.2 (python)"},"fix":{"suggestedVersion":"25.3"}}],"artifact":{"id":"518b698e3880bafb","name":"pip","version":"25.2","type":"python","locations":[{"path":"/.venv/Lib/site-packages/pip-25.2.dist-info/METADATA","accessPath":"/.venv/Lib/site-packages/pip-25.2.dist-info/METADATA","annotations":{"evidence":"primary"}},{"path":"/.venv/Lib/site-packages/pip-25.2.dist-info/RECORD","accessPath":"/.venv/Lib/site-packages/pip-25.2.dist-info/RECORD","annotations":{"evidence":"supporting"}},{"path":"/.venv/Lib/site-packages/pip-25.2.dist-info/top_level.txt","accessPath":"/.venv/Lib/site-packages/pip-25.2.dist-info/top_level.txt","annotations":{"evidence":"supporting"}}],"language":"python","licenses":["MIT"],"cpes":["cpe:2.3:a:pip_developers_\\<distutils_sig_project:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sig_project:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sigproject:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sigproject:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sig_project:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip-developers-\\<distutils-sig:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip-developers-\\<distutils-sig:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sig:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sig:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sigproject:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip-developers-\\<distutils-sig:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip_developers_\\<distutils_sig:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python-pip:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python-pip:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python_pip:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python_pip:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pypa:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pypa:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip:python-pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip:python_pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python-pip:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python_pip:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:python:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pypa:pip:25.2:*:*:*:*:*:*:*","cpe:2.3:a:pip:pip:25.2:*:*:*:*:*:*:*"],"purl":"pkg:pypi/pip@25.2","upstreams":[]}},{"vulnerability":{"id":"CVE-2025-6075","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-6075","namespace":"nvd:cpe","severity":"Low","urls":["https://github.com/python/cpython/commit/2e6150adccaaf5bd95d4c19dfd04a36e0b325d8c","https://github.com/python/cpython/commit/631ba3407e3348ccd56ce5160c4fb2c5dc5f4d84","https://github.com/python/cpython/commit/892747b4cf0f95ba8beb51c0d0658bfaa381ebca","https://github.com/python/cpython/commit/9ab89c026aa9611c4b0b67c288b8303a480fe742","https://github.com/python/cpython/commit/c8a5f3435c342964e0a432cc9fb448b7dbecd1ba","https://github.com/python/cpython/commit/f029e8db626ddc6e3a3beea4eff511a71aaceb5c","https://github.com/python/cpython/issues/136065","https://mail.python.org/archives/list/security-announce@python.org/thread/IUP5QJ6D4KK6ULHOMPC7DPNKRYQTQNLA/"],"description":"If the value passed to os.path.expandvars() is user-controlled a \nperformance degradation is possible when expanding environment \nvariables.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":1.8},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-6075","epss":0.00017,"percentile":0.03049,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-6075","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.15.0"],"state":"fixed","available":[{"version":"3.15.0","date":"2025-11-07","kind":"first-observed"}]},"advisories":[],"risk":0.00408},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2025-6075","versionConstraint":"< 3.15.0 (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]},"fix":{"suggestedVersion":"3.15.0"}}],"artifact":{"id":"8836c9166fefe953","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/pythonw.exe","accessPath":"/.venv/Scripts/pythonw.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}},{"vulnerability":{"id":"CVE-2025-6075","dataSource":"https://nvd.nist.gov/vuln/detail/CVE-2025-6075","namespace":"nvd:cpe","severity":"Low","urls":["https://github.com/python/cpython/commit/2e6150adccaaf5bd95d4c19dfd04a36e0b325d8c","https://github.com/python/cpython/commit/631ba3407e3348ccd56ce5160c4fb2c5dc5f4d84","https://github.com/python/cpython/commit/892747b4cf0f95ba8beb51c0d0658bfaa381ebca","https://github.com/python/cpython/commit/9ab89c026aa9611c4b0b67c288b8303a480fe742","https://github.com/python/cpython/commit/c8a5f3435c342964e0a432cc9fb448b7dbecd1ba","https://github.com/python/cpython/commit/f029e8db626ddc6e3a3beea4eff511a71aaceb5c","https://github.com/python/cpython/issues/136065","https://mail.python.org/archives/list/security-announce@python.org/thread/IUP5QJ6D4KK6ULHOMPC7DPNKRYQTQNLA/"],"description":"If the value passed to os.path.expandvars() is user-controlled a \nperformance degradation is possible when expanding environment \nvariables.","cvss":[{"source":"cna@python.org","type":"Secondary","version":"4.0","vector":"CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X","metrics":{"baseScore":1.8},"vendorMetadata":{}}],"epss":[{"cve":"CVE-2025-6075","epss":0.00017,"percentile":0.03049,"date":"2025-11-26"}],"cwes":[{"cve":"CVE-2025-6075","cwe":"CWE-400","source":"134c704f-9b21-4f2e-91b3-4a467353bcc0","type":"Secondary"}],"fix":{"versions":["3.15.0"],"state":"fixed","available":[{"version":"3.15.0","date":"2025-11-07","kind":"first-observed"}]},"advisories":[],"risk":0.00408},"relatedVulnerabilities":[],"matchDetails":[{"type":"cpe-match","matcher":"stock-matcher","searchedBy":{"namespace":"nvd:cpe","cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"package":{"name":"Python","version":"3.14.0"}},"found":{"vulnerabilityID":"CVE-2025-6075","versionConstraint":"< 3.15.0 (unknown)","cpes":["cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"]},"fix":{"suggestedVersion":"3.15.0"}}],"artifact":{"id":"27ccbacb716d4e24","name":"Python","version":"3.14.0","type":"binary","locations":[{"path":"/.venv/Scripts/python.exe","accessPath":"/.venv/Scripts/python.exe","annotations":{"evidence":"primary"}}],"language":"","licenses":[],"cpes":["cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"],"purl":"","upstreams":[]}}],"source":{"type":"directory","target":"."},"distro":{"name":"","version":"","idLike":null},"descriptor":{"name":"grype","version":"0.104.1","configuration":{"output":["json"],"file":"","pretty":false,"distro":"","add-cpes-if-none":false,"output-template-file":"","check-for-app-update":true,"only-fixed":false,"only-notfixed":false,"ignore-wontfix":"","platform":"","search":{"scope":"squashed","unindexed-archives":false,"indexed-archives":true},"ignore":[{"vulnerability":"","include-aliases":false,"reason":"","namespace":"","fix-state":"","package":{"name":"kernel-headers","version":"","language":"","type":"rpm","location":"","upstream-name":"kernel"},"vex-status":"","vex-justification":"","match-type":"exact-indirect-match"},{"vulnerability":"","include-aliases":false,"reason":"","namespace":"","fix-state":"","package":{"name":"linux(-.*)?-headers-.*","version":"","language":"","type":"deb","location":"","upstream-name":"linux.*"},"vex-status":"","vex-justification":"","match-type":"exact-indirect-match"},{"vulnerability":"","include-aliases":false,"reason":"","namespace":"","fix-state":"","package":{"name":"linux-libc-dev","version":"","language":"","type":"deb","location":"","upstream-name":"linux"},"vex-status":"","vex-justification":"","match-type":"exact-indirect-match"}],"exclude":[],"externalSources":{"enable":false,"maven":{"searchUpstreamBySha1":true,"baseUrl":"https://search.maven.org/solrsearch/select","rateLimit":300000000}},"match":{"java":{"using-cpes":false},"jvm":{"using-cpes":true},"dotnet":{"using-cpes":false},"golang":{"using-cpes":false,"always-use-cpe-for-stdlib":true,"allow-main-module-pseudo-version-comparison":false},"javascript":{"using-cpes":false},"python":{"using-cpes":false},"ruby":{"using-cpes":false},"rust":{"using-cpes":false},"stock":{"using-cpes":true}},"fail-on-severity":"","registry":{"insecure-skip-tls-verify":false,"insecure-use-http":false,"ca-cert":""},"show-suppressed":false,"by-cve":false,"SortBy":{"sort-by":"risk"},"name":"","default-image-pull-source":"","from":null,"vex-documents":[],"vex-add":[],"match-upstream-kernel-headers":false,"fix-channel":{"redhat-eus":{"apply":"auto","versions":">= 8.0"}},"timestamp":true,"db":{"cache-dir":"/.cache/grype/db","update-url":"https://grype.anchore.io/databases","ca-cert":"","auto-update":true,"validate-by-hash-on-start":true,"validate-age":true,"max-allowed-built-age":432000000000000,"require-update-check":false,"update-available-timeout":30000000000,"update-download-timeout":300000000000,"max-update-check-frequency":7200000000000},"exp":{},"dev":{"db":{"debug":false}}},"db":{"status":{"schemaVersion":"v6.1.3","from":"https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.3_2025-11-27T00:25:44Z_1764228132.tar.zst?checksum=sha256%3Af5e975c2860abcbd97dd6ba6df45b1d5608b24a41c6ade6e8a8f3011e992e9ef","built":"2025-11-27T07:22:12Z","path":"/.cache/grype/db/6/vulnerability.db","valid":true},"providers":{"alma":{"captured":"2025-11-27T00:25:44Z","input":"xxh64:cbfa4506897a58b3"},"alpine":{"captured":"2025-11-27T00:25:45Z","input":"xxh64:a569631ac7bbfbb4"},"amazon":{"captured":"2025-11-27T00:25:46Z","input":"xxh64:0c331a7b9f747b1c"},"bitnami":{"captured":"2025-11-27T00:25:54Z","input":"xxh64:ac1f63d5461ffaa6"},"chainguard":{"captured":"2025-11-27T00:25:57Z","input":"xxh64:121bab08a9e907d0"},"chainguard-libraries":{"captured":"2025-11-27T00:25:49Z","input":"xxh64:927dee20052e722a"},"debian":{"captured":"2025-11-27T00:25:58Z","input":"xxh64:07621ff26cf8201a"},"echo":{"captured":"2025-11-27T00:25:53Z","input":"xxh64:0f5a1a84c5dfa79e"},"epss":{"captured":"2025-11-27T00:25:51Z","input":"xxh64:8b2e28226597eb2f"},"github":{"captured":"2025-11-27T00:26:00Z","input":"xxh64:2e6690ea83e65410"},"kev":{"captured":"2025-11-27T00:25:48Z","input":"xxh64:be65bda8c3cf1a5c"},"mariner":{"captured":"2025-11-27T00:25:45Z","input":"xxh64:e037e8d845c03807"},"minimos":{"captured":"2025-11-27T00:25:45Z","input":"xxh64:99b067eaace08d16"},"nvd":{"captured":"2025-11-27T00:28:29Z","input":"xxh64:e388530ab460ccc3"},"oracle":{"captured":"2025-11-27T00:25:48Z","input":"xxh64:6787fe43a3309054"},"rhel":{"captured":"2025-11-27T00:26:44Z","input":"xxh64:4cb677a3fea5add3"},"sles":{"captured":"2025-11-27T00:26:16Z","input":"xxh64:580daba1fb91df70"},"ubuntu":{"captured":"2025-11-27T00:28:02Z","input":"xxh64:37b783c8362ec85c"},"wolfi":{"captured":"2025-11-27T00:25:59Z","input":"xxh64:73357bd5c7cbbfc3"}}},"timestamp":"2025-11-29T16:39:38.454712447Z"}}
+{
+  "matches": [
+    {
+      "vulnerability": {
+        "id": "GHSA-6c5p-j8vq-pqhj",
+        "dataSource": "https://github.com/advisories/GHSA-6c5p-j8vq-pqhj",
+        "namespace": "github:language:python",
+        "severity": "Critical",
+        "urls": [],
+        "description": "python-jose algorithm confusion with OpenSSH ECDSA keys",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "metrics": {
+              "baseScore": 7.4,
+              "exploitabilityScore": 2.3,
+              "impactScore": 5.2
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-33663",
+            "epss": 0.00684,
+            "percentile": 0.70866,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-33663",
+            "cwe": "CWE-327",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.4.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.4.0",
+              "date": "2025-02-19",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.56088
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-33663",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-33663",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/mpdavis/python-jose/issues/346",
+            "https://www.vicarius.io/vsociety/posts/algorithm-confusion-in-python-jose-cve-2024-33663"
+          ],
+          "description": "python-jose through 3.3.0 has algorithm confusion with OpenSSH ECDSA keys and other key formats. This is similar to CVE-2022-29217.",
+          "cvss": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+              "metrics": {
+                "baseScore": 6.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 2.6
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-33663",
+              "epss": 0.00684,
+              "percentile": 0.70866,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-33663",
+              "cwe": "CWE-327",
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-jose",
+              "version": "3.3.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-6c5p-j8vq-pqhj",
+            "versionConstraint": "<3.4.0 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "3.4.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "7cd324cf00d675e4",
+        "name": "python-jose",
+        "version": "3.3.0",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/requirements.txt",
+            "accessPath": "/requirements.txt",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "pkg:pypi/python-jose@3.3.0",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-6c5p-j8vq-pqhj",
+        "dataSource": "https://github.com/advisories/GHSA-6c5p-j8vq-pqhj",
+        "namespace": "github:language:python",
+        "severity": "Critical",
+        "urls": [],
+        "description": "python-jose algorithm confusion with OpenSSH ECDSA keys",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "metrics": {
+              "baseScore": 7.4,
+              "exploitabilityScore": 2.3,
+              "impactScore": 5.2
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-33663",
+            "epss": 0.00684,
+            "percentile": 0.70866,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-33663",
+            "cwe": "CWE-327",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.4.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.4.0",
+              "date": "2025-02-19",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.56088
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-33663",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-33663",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/mpdavis/python-jose/issues/346",
+            "https://www.vicarius.io/vsociety/posts/algorithm-confusion-in-python-jose-cve-2024-33663"
+          ],
+          "description": "python-jose through 3.3.0 has algorithm confusion with OpenSSH ECDSA keys and other key formats. This is similar to CVE-2022-29217.",
+          "cvss": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+              "metrics": {
+                "baseScore": 6.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 2.6
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-33663",
+              "epss": 0.00684,
+              "percentile": 0.70866,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-33663",
+              "cwe": "CWE-327",
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-jose",
+              "version": "3.3.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-6c5p-j8vq-pqhj",
+            "versionConstraint": "<3.4.0 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "3.4.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "a45b7dac320b2066",
+        "name": "python-jose",
+        "version": "3.3.0",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "MIT"
+        ],
+        "cpes": [
+          "cpe:2.3:a:mike_philip_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike-philip-davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike-philip-davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "pkg:pypi/python-jose@3.3.0",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-wj6h-64fc-37mp",
+        "dataSource": "https://github.com/advisories/GHSA-wj6h-64fc-37mp",
+        "namespace": "github:language:python",
+        "severity": "High",
+        "urls": [],
+        "description": "Minerva timing attack on P-256 in python-ecdsa",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "metrics": {
+              "baseScore": 7.4,
+              "exploitabilityScore": 2.3,
+              "impactScore": 5.2
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-23342",
+            "epss": 0.00622,
+            "percentile": 0.69275,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-23342",
+            "cwe": "CWE-203",
+            "source": "security-advisories@github.com",
+            "type": "Primary"
+          },
+          {
+            "cve": "CVE-2024-23342",
+            "cwe": "CWE-208",
+            "source": "security-advisories@github.com",
+            "type": "Primary"
+          },
+          {
+            "cve": "CVE-2024-23342",
+            "cwe": "CWE-385",
+            "source": "security-advisories@github.com",
+            "type": "Primary"
+          }
+        ],
+        "fix": {
+          "versions": [],
+          "state": "not-fixed"
+        },
+        "advisories": [],
+        "risk": 0.46338999999999997
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-23342",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-23342",
+          "namespace": "nvd:cpe",
+          "severity": "High",
+          "urls": [
+            "https://github.com/tlsfuzzer/python-ecdsa/blob/master/SECURITY.md",
+            "https://github.com/tlsfuzzer/python-ecdsa/security/advisories/GHSA-wj6h-64fc-37mp",
+            "https://minerva.crocs.fi.muni.cz/",
+            "https://securitypitfalls.wordpress.com/2018/08/03/constant-time-compare-in-python/"
+          ],
+          "description": "The `ecdsa` PyPI package is a pure Python implementation of ECC (Elliptic Curve Cryptography) with support for ECDSA (Elliptic Curve Digital Signature Algorithm), EdDSA (Edwards-curve Digital Signature Algorithm) and ECDH (Elliptic Curve Diffie-Hellman). Versions 0.18.0 and prior are vulnerable to the Minerva attack. As of time of publication, no known patched version exists.",
+          "cvss": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "metrics": {
+                "baseScore": 7.4,
+                "exploitabilityScore": 2.3,
+                "impactScore": 5.2
+              },
+              "vendorMetadata": {}
+            },
+            {
+              "source": "security-advisories@github.com",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+              "metrics": {
+                "baseScore": 7.4,
+                "exploitabilityScore": 2.3,
+                "impactScore": 5.2
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-23342",
+              "epss": 0.00622,
+              "percentile": 0.69275,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-23342",
+              "cwe": "CWE-203",
+              "source": "security-advisories@github.com",
+              "type": "Primary"
+            },
+            {
+              "cve": "CVE-2024-23342",
+              "cwe": "CWE-208",
+              "source": "security-advisories@github.com",
+              "type": "Primary"
+            },
+            {
+              "cve": "CVE-2024-23342",
+              "cwe": "CWE-385",
+              "source": "security-advisories@github.com",
+              "type": "Primary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "ecdsa",
+              "version": "0.19.1"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-wj6h-64fc-37mp",
+            "versionConstraint": ">=0 (python)"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "9bcf4b39b9fff122",
+        "name": "ecdsa",
+        "version": "0.19.1",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/top_level.txt",
+            "accessPath": "/.venv/Lib/site-packages/ecdsa-0.19.1.dist-info/top_level.txt",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "MIT"
+        ],
+        "cpes": [
+          "cpe:2.3:a:tlsfuzzer:ecdsa:0.19.1:*:*:*:*:python:*:*"
+        ],
+        "purl": "pkg:pypi/ecdsa@0.19.1",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-59g5-xgcq-4qw3",
+        "dataSource": "https://github.com/advisories/GHSA-59g5-xgcq-4qw3",
+        "namespace": "github:language:python",
+        "severity": "High",
+        "urls": [],
+        "description": "Denial of service (DoS) via deformation `multipart/form-data` boundary",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "metrics": {
+              "baseScore": 7.5,
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-53981",
+            "epss": 0.00346,
+            "percentile": 0.56483,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-53981",
+            "cwe": "CWE-770",
+            "source": "security-advisories@github.com",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "0.0.18"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "0.0.18",
+              "date": "2024-12-03",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.2595
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-53981",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-53981",
+          "namespace": "nvd:cpe",
+          "severity": "High",
+          "urls": [
+            "https://github.com/Kludex/python-multipart/commit/c4fe4d3cebc08c660e57dd709af1ffa7059b3177",
+            "https://github.com/Kludex/python-multipart/security/advisories/GHSA-59g5-xgcq-4qw3"
+          ],
+          "description": "python-multipart is a streaming multipart parser for Python. When parsing form data, python-multipart skips line breaks (CR \\r or LF \\n) in front of the first boundary and any tailing bytes after the last boundary. This happens one byte at a time and emits a log event each time, which may cause excessive logging for certain inputs. An attacker could abuse this by sending a malicious request with lots of data before the first or after the last boundary, causing high CPU load and stalling the processing thread for a significant amount of time. In case of ASGI application, this could stall the event loop and prevent other requests from being processed, resulting in a denial of service (DoS). This vulnerability is fixed in 0.0.18.",
+          "cvss": [
+            {
+              "source": "security-advisories@github.com",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "metrics": {
+                "baseScore": 7.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 3.6
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-53981",
+              "epss": 0.00346,
+              "percentile": 0.56483,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-53981",
+              "cwe": "CWE-770",
+              "source": "security-advisories@github.com",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-multipart",
+              "version": "0.0.9"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-59g5-xgcq-4qw3",
+            "versionConstraint": "<0.0.18 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "0.0.18"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "ebbb99363f4e5605",
+        "name": "python-multipart",
+        "version": "0.0.9",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/python_multipart-0.0.9.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "Apache-2.0"
+        ],
+        "cpes": [
+          "cpe:2.3:a:fastapiexpert:python-multipart:0.0.9:*:*:*:*:python:*:*"
+        ],
+        "purl": "pkg:pypi/python-multipart@0.0.9",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-59g5-xgcq-4qw3",
+        "dataSource": "https://github.com/advisories/GHSA-59g5-xgcq-4qw3",
+        "namespace": "github:language:python",
+        "severity": "High",
+        "urls": [],
+        "description": "Denial of service (DoS) via deformation `multipart/form-data` boundary",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "metrics": {
+              "baseScore": 7.5,
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-53981",
+            "epss": 0.00346,
+            "percentile": 0.56483,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-53981",
+            "cwe": "CWE-770",
+            "source": "security-advisories@github.com",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "0.0.18"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "0.0.18",
+              "date": "2024-12-03",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.2595
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-53981",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-53981",
+          "namespace": "nvd:cpe",
+          "severity": "High",
+          "urls": [
+            "https://github.com/Kludex/python-multipart/commit/c4fe4d3cebc08c660e57dd709af1ffa7059b3177",
+            "https://github.com/Kludex/python-multipart/security/advisories/GHSA-59g5-xgcq-4qw3"
+          ],
+          "description": "python-multipart is a streaming multipart parser for Python. When parsing form data, python-multipart skips line breaks (CR \\r or LF \\n) in front of the first boundary and any tailing bytes after the last boundary. This happens one byte at a time and emits a log event each time, which may cause excessive logging for certain inputs. An attacker could abuse this by sending a malicious request with lots of data before the first or after the last boundary, causing high CPU load and stalling the processing thread for a significant amount of time. In case of ASGI application, this could stall the event loop and prevent other requests from being processed, resulting in a denial of service (DoS). This vulnerability is fixed in 0.0.18.",
+          "cvss": [
+            {
+              "source": "security-advisories@github.com",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "metrics": {
+                "baseScore": 7.5,
+                "exploitabilityScore": 3.9,
+                "impactScore": 3.6
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-53981",
+              "epss": 0.00346,
+              "percentile": 0.56483,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-53981",
+              "cwe": "CWE-770",
+              "source": "security-advisories@github.com",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-multipart",
+              "version": "0.0.9"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-59g5-xgcq-4qw3",
+            "versionConstraint": "<0.0.18 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "0.0.18"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "f531b70722afe41a",
+        "name": "python-multipart",
+        "version": "0.0.9",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/requirements.txt",
+            "accessPath": "/requirements.txt",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:fastapiexpert:python-multipart:0.0.9:*:*:*:*:python:*:*"
+        ],
+        "purl": "pkg:pypi/python-multipart@0.0.9",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-cjwg-qfpm-7377",
+        "dataSource": "https://github.com/advisories/GHSA-cjwg-qfpm-7377",
+        "namespace": "github:language:python",
+        "severity": "Medium",
+        "urls": [],
+        "description": "python-jose denial of service via compressed JWE content",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "metrics": {
+              "baseScore": 5.3,
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.5
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-33664",
+            "epss": 0.00194,
+            "percentile": 0.41496,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-33664",
+            "cwe": "CWE-400",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.4.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.4.0",
+              "date": "2025-02-19",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.09991000000000001
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-33664",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-33664",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/mpdavis/python-jose/issues/344",
+            "https://github.com/mpdavis/python-jose/pull/345",
+            "https://www.vicarius.io/vsociety/posts/jwt-bomb-in-python-jose-cve-2024-33664"
+          ],
+          "description": "python-jose through 3.3.0 allows attackers to cause a denial of service (resource consumption) during a decode via a crafted JSON Web Encryption (JWE) token with a high compression ratio, aka a \"JWT bomb.\" This is similar to CVE-2024-21319.",
+          "cvss": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "metrics": {
+                "baseScore": 5.3,
+                "exploitabilityScore": 3.9,
+                "impactScore": 1.5
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-33664",
+              "epss": 0.00194,
+              "percentile": 0.41496,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-33664",
+              "cwe": "CWE-400",
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-jose",
+              "version": "3.3.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-cjwg-qfpm-7377",
+            "versionConstraint": "<3.4.0 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "3.4.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "a45b7dac320b2066",
+        "name": "python-jose",
+        "version": "3.3.0",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt",
+            "accessPath": "/.venv/Lib/site-packages/python_jose-3.3.0.dist-info/top_level.txt",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "MIT"
+        ],
+        "cpes": [
+          "cpe:2.3:a:mike_philip_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis_project:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis_project:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davisproject:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davisproject:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike-philip-davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike-philip-davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:mike_philip_davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:michael_davis:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "pkg:pypi/python-jose@3.3.0",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-cjwg-qfpm-7377",
+        "dataSource": "https://github.com/advisories/GHSA-cjwg-qfpm-7377",
+        "namespace": "github:language:python",
+        "severity": "Medium",
+        "urls": [],
+        "description": "python-jose denial of service via compressed JWE content",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "metrics": {
+              "baseScore": 5.3,
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.5
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-33664",
+            "epss": 0.00194,
+            "percentile": 0.41496,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-33664",
+            "cwe": "CWE-400",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.4.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.4.0",
+              "date": "2025-02-19",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.09991000000000001
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-33664",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-33664",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/mpdavis/python-jose/issues/344",
+            "https://github.com/mpdavis/python-jose/pull/345",
+            "https://www.vicarius.io/vsociety/posts/jwt-bomb-in-python-jose-cve-2024-33664"
+          ],
+          "description": "python-jose through 3.3.0 allows attackers to cause a denial of service (resource consumption) during a decode via a crafted JSON Web Encryption (JWE) token with a high compression ratio, aka a \"JWT bomb.\" This is similar to CVE-2024-21319.",
+          "cvss": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "metrics": {
+                "baseScore": 5.3,
+                "exploitabilityScore": 3.9,
+                "impactScore": 1.5
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-33664",
+              "epss": 0.00194,
+              "percentile": 0.41496,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-33664",
+              "cwe": "CWE-400",
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "python-jose",
+              "version": "3.3.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-cjwg-qfpm-7377",
+            "versionConstraint": "<3.4.0 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "3.4.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "7cd324cf00d675e4",
+        "name": "python-jose",
+        "version": "3.3.0",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/requirements.txt",
+            "accessPath": "/requirements.txt",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "pkg:pypi/python-jose@3.3.0",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-f96h-pmfr-66vw",
+        "dataSource": "https://github.com/advisories/GHSA-f96h-pmfr-66vw",
+        "namespace": "github:language:python",
+        "severity": "High",
+        "urls": [],
+        "description": "Starlette Denial of service (DoS) via multipart/form-data",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+            "metrics": {
+              "baseScore": 0,
+              "exploitabilityScore": 3.9,
+              "impactScore": 0
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-47874",
+            "epss": 0.00092,
+            "percentile": 0.26413,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-47874",
+            "cwe": "CWE-770",
+            "source": "security-advisories@github.com",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "0.40.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "0.40.0",
+              "date": "2024-10-16",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.069
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2024-47874",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-47874",
+          "namespace": "nvd:cpe",
+          "severity": "High",
+          "urls": [
+            "https://github.com/encode/starlette/commit/fd038f3070c302bff17ef7d173dbb0b007617733",
+            "https://github.com/encode/starlette/security/advisories/GHSA-f96h-pmfr-66vw"
+          ],
+          "description": "Starlette is an Asynchronous Server Gateway Interface (ASGI) framework/toolkit. Prior to version 0.40.0, Starlette treats `multipart/form-data` parts without a `filename` as text form fields and buffers those in byte strings with no size limit. This allows an attacker to upload arbitrary large form fields and cause Starlette to both slow down significantly due to excessive memory allocations and copy operations, and also consume more and more memory until the server starts swapping and grinds to a halt, or the OS terminates the server process with an OOM error. Uploading multiple such requests in parallel may be enough to render a service practically unusable, even if reasonable request size limits are enforced by a reverse proxy in front of Starlette. This Denial of service (DoS) vulnerability affects all applications built with Starlette (or FastAPI) accepting form requests. Verison 0.40.0 fixes this issue.",
+          "cvss": [
+            {
+              "source": "security-advisories@github.com",
+              "type": "Secondary",
+              "version": "4.0",
+              "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+              "metrics": {
+                "baseScore": 8.7
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2024-47874",
+              "epss": 0.00092,
+              "percentile": 0.26413,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2024-47874",
+              "cwe": "CWE-770",
+              "source": "security-advisories@github.com",
+              "type": "Secondary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "starlette",
+              "version": "0.38.6"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-f96h-pmfr-66vw",
+            "versionConstraint": "<0.40.0 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "0.40.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "9b8f60a89cd09a1d",
+        "name": "starlette",
+        "version": "0.38.6",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "cpes": [
+          "cpe:2.3:a:encode:starlette:0.38.6:*:*:*:*:python:*:*"
+        ],
+        "purl": "pkg:pypi/starlette@0.38.6",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2025-8291",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-8291",
+        "namespace": "nvd:cpe",
+        "severity": "Medium",
+        "urls": [
+          "https://github.com/python/cpython/commit/162997bb70e067668c039700141770687bc8f267",
+          "https://github.com/python/cpython/commit/1d29afb0d6218aa8fb5e1e4a6133a4778d89bb46",
+          "https://github.com/python/cpython/commit/333d4a6f4967d3ace91492a39ededbcf3faa76a6",
+          "https://github.com/python/cpython/commit/76437ac248ad8ca44e9bf697b02b1e2241df2196",
+          "https://github.com/python/cpython/commit/8392b2f0d35678407d9ce7d95655a5b77de161b4",
+          "https://github.com/python/cpython/commit/bca11ae7d575d87ed93f5dd6a313be6246e3e388",
+          "https://github.com/python/cpython/commit/d11e69d6203080e3ec450446bfed0516727b85c3",
+          "https://github.com/python/cpython/issues/139700",
+          "https://github.com/python/cpython/pull/139702",
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/QECOPWMTH4VPPJAXAH2BGTA4XADOP62G/",
+          "https://github.com/google/security-research/security/advisories/GHSA-hhv7-p4pg-wm6p",
+          "https://github.com/psf/advisory-database/blob/main/advisories/python/PSF-2025-12.json"
+        ],
+        "description": "The 'zipfile' module would not check the validity of the ZIP64 End of\nCentral Directory (EOCD) Locator record offset value would not be used to\nlocate the ZIP64 EOCD record, instead the ZIP64 EOCD record would be\nassumed to be the previous record in the ZIP archive. This could be abused\nto create ZIP archives that are handled differently by the 'zipfile' module\ncompared to other ZIP implementations.\n\n\nRemediation maintains this behavior, but checks that the offset specified\nin the ZIP64 EOCD Locator record matches the expected value.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+            "metrics": {
+              "baseScore": 4.3,
+              "exploitabilityScore": 2.9,
+              "impactScore": 1.5
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2025-8291",
+            "epss": 0.00135,
+            "percentile": 0.33976,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2025-8291",
+            "cwe": "CWE-1285",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.9.24",
+            "3.10.19",
+            "3.11.14",
+            "3.12.12",
+            "3.14.1"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.9.24",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.10.19",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.11.14",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.12.12",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.14.1",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.062775
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2025-8291",
+            "versionConstraint": "< 3.9.24,>= 3.10.0, < 3.10.19,>= 3.11.0, < 3.11.14,>= 3.12.0, < 3.12.12,>= 3.13.0a1, < 3.14.1 (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          },
+          "fix": {
+            "suggestedVersion": "3.14.1"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "8836c9166fefe953",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/pythonw.exe",
+            "accessPath": "/.venv/Scripts/pythonw.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2025-8291",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-8291",
+        "namespace": "nvd:cpe",
+        "severity": "Medium",
+        "urls": [
+          "https://github.com/python/cpython/commit/162997bb70e067668c039700141770687bc8f267",
+          "https://github.com/python/cpython/commit/1d29afb0d6218aa8fb5e1e4a6133a4778d89bb46",
+          "https://github.com/python/cpython/commit/333d4a6f4967d3ace91492a39ededbcf3faa76a6",
+          "https://github.com/python/cpython/commit/76437ac248ad8ca44e9bf697b02b1e2241df2196",
+          "https://github.com/python/cpython/commit/8392b2f0d35678407d9ce7d95655a5b77de161b4",
+          "https://github.com/python/cpython/commit/bca11ae7d575d87ed93f5dd6a313be6246e3e388",
+          "https://github.com/python/cpython/commit/d11e69d6203080e3ec450446bfed0516727b85c3",
+          "https://github.com/python/cpython/issues/139700",
+          "https://github.com/python/cpython/pull/139702",
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/QECOPWMTH4VPPJAXAH2BGTA4XADOP62G/",
+          "https://github.com/google/security-research/security/advisories/GHSA-hhv7-p4pg-wm6p",
+          "https://github.com/psf/advisory-database/blob/main/advisories/python/PSF-2025-12.json"
+        ],
+        "description": "The 'zipfile' module would not check the validity of the ZIP64 End of\nCentral Directory (EOCD) Locator record offset value would not be used to\nlocate the ZIP64 EOCD record, instead the ZIP64 EOCD record would be\nassumed to be the previous record in the ZIP archive. This could be abused\nto create ZIP archives that are handled differently by the 'zipfile' module\ncompared to other ZIP implementations.\n\n\nRemediation maintains this behavior, but checks that the offset specified\nin the ZIP64 EOCD Locator record matches the expected value.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+            "metrics": {
+              "baseScore": 4.3,
+              "exploitabilityScore": 2.9,
+              "impactScore": 1.5
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2025-8291",
+            "epss": 0.00135,
+            "percentile": 0.33976,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2025-8291",
+            "cwe": "CWE-1285",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.9.24",
+            "3.10.19",
+            "3.11.14",
+            "3.12.12",
+            "3.14.1"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.9.24",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.10.19",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.11.14",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.12.12",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.14.1",
+              "date": "2025-10-10",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.062775
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2025-8291",
+            "versionConstraint": "< 3.9.24,>= 3.10.0, < 3.10.19,>= 3.11.0, < 3.11.14,>= 3.12.0, < 3.12.12,>= 3.13.0a1, < 3.14.1 (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          },
+          "fix": {
+            "suggestedVersion": "3.14.1"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "27ccbacb716d4e24",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/python.exe",
+            "accessPath": "/.venv/Scripts/python.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2024-3220",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-3220",
+        "namespace": "nvd:cpe",
+        "severity": "Low",
+        "urls": [
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/CDXW34ND2LSAOYAR5N6UNONP4ZBX4D6R/",
+          "http://www.openwall.com/lists/oss-security/2025/02/14/8",
+          "https://security.netapp.com/advisory/ntap-20250314-0001/"
+        ],
+        "description": "There is a defect in the CPython standard library module тАЬmimetypesтАЭ where on Windows the default list of known file locations are writable meaning other users can create invalid files to cause MemoryError to be raised on Python runtime startup or have file extensions be interpreted as the incorrect file type.\n\nThis defect is caused by the default locations of Linux and macOS platforms (such as тАЬ/etc/mime.typesтАЭ) also being used on Windows, where they are user-writable locations (тАЬC:\\etc\\mime.typesтАЭ).\n\nTo work-around this issue a user can call mimetypes.init() with an empty list (тАЬ[]тАЭ) on Windows platforms to avoid using the default list of known file locations.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "4.0",
+            "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+            "metrics": {
+              "baseScore": 2.3
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-3220",
+            "epss": 0.00203,
+            "percentile": 0.42574,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-3220",
+            "cwe": "CWE-426",
+            "source": "cna@python.org",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [],
+          "state": ""
+        },
+        "advisories": [],
+        "risk": 0.053795
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2024-3220",
+            "versionConstraint": "none (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          }
+        }
+      ],
+      "artifact": {
+        "id": "27ccbacb716d4e24",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/python.exe",
+            "accessPath": "/.venv/Scripts/python.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2024-3220",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2024-3220",
+        "namespace": "nvd:cpe",
+        "severity": "Low",
+        "urls": [
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/CDXW34ND2LSAOYAR5N6UNONP4ZBX4D6R/",
+          "http://www.openwall.com/lists/oss-security/2025/02/14/8",
+          "https://security.netapp.com/advisory/ntap-20250314-0001/"
+        ],
+        "description": "There is a defect in the CPython standard library module тАЬmimetypesтАЭ where on Windows the default list of known file locations are writable meaning other users can create invalid files to cause MemoryError to be raised on Python runtime startup or have file extensions be interpreted as the incorrect file type.\n\nThis defect is caused by the default locations of Linux and macOS platforms (such as тАЬ/etc/mime.typesтАЭ) also being used on Windows, where they are user-writable locations (тАЬC:\\etc\\mime.typesтАЭ).\n\nTo work-around this issue a user can call mimetypes.init() with an empty list (тАЬ[]тАЭ) on Windows platforms to avoid using the default list of known file locations.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "4.0",
+            "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+            "metrics": {
+              "baseScore": 2.3
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2024-3220",
+            "epss": 0.00203,
+            "percentile": 0.42574,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2024-3220",
+            "cwe": "CWE-426",
+            "source": "cna@python.org",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [],
+          "state": ""
+        },
+        "advisories": [],
+        "risk": 0.053795
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2024-3220",
+            "versionConstraint": "none (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          }
+        }
+      ],
+      "artifact": {
+        "id": "8836c9166fefe953",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/pythonw.exe",
+            "accessPath": "/.venv/Scripts/pythonw.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-2c2j-9gv5-cj73",
+        "dataSource": "https://github.com/advisories/GHSA-2c2j-9gv5-cj73",
+        "namespace": "github:language:python",
+        "severity": "Medium",
+        "urls": [],
+        "description": "Starlette has possible denial-of-service vector when parsing large files in multipart forms",
+        "cvss": [
+          {
+            "type": "Secondary",
+            "version": "3.1",
+            "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+            "metrics": {
+              "baseScore": 5.3,
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.5
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2025-54121",
+            "epss": 0.00087,
+            "percentile": 0.25415,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2025-54121",
+            "cwe": "CWE-770",
+            "source": "security-advisories@github.com",
+            "type": "Primary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "0.47.2"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "0.47.2",
+              "date": "2025-07-22",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.044805000000000005
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2025-54121",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-54121",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/encode/starlette/blob/fa5355442753f794965ae1af0f87f9fec1b9a3de/starlette/datastructures.py#L436C5-L447C14",
+            "https://github.com/encode/starlette/commit/9f7ec2eb512fcc3fe90b43cb9dd9e1d08696bec1",
+            "https://github.com/encode/starlette/discussions/2927#discussioncomment-13721403",
+            "https://github.com/encode/starlette/security/advisories/GHSA-2c2j-9gv5-cj73"
+          ],
+          "description": "Starlette is a lightweight ASGI (Asynchronous Server Gateway Interface) framework/toolkit, designed for building async web services in Python. In versions 0.47.1 and below, when parsing a multi-part form with large files (greater than the default max spool size) starlette will block the main thread to roll the file over to disk. This blocks the event thread which means the application can't accept new connections. The UploadFile code has a minor bug where instead of just checking for self._in_memory, the logic should also check if the additional bytes will cause a rollover. The vulnerability is fixed in version 0.47.2.",
+          "cvss": [
+            {
+              "source": "security-advisories@github.com",
+              "type": "Secondary",
+              "version": "3.1",
+              "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "metrics": {
+                "baseScore": 5.3,
+                "exploitabilityScore": 3.9,
+                "impactScore": 1.5
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2025-54121",
+              "epss": 0.00087,
+              "percentile": 0.25415,
+              "date": "2025-11-26"
+            }
+          ],
+          "cwes": [
+            {
+              "cve": "CVE-2025-54121",
+              "cwe": "CWE-770",
+              "source": "security-advisories@github.com",
+              "type": "Primary"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "starlette",
+              "version": "0.38.6"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-2c2j-9gv5-cj73",
+            "versionConstraint": "<0.47.2 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "0.47.2"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "9b8f60a89cd09a1d",
+        "name": "starlette",
+        "version": "0.38.6",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/starlette-0.38.6.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "cpes": [
+          "cpe:2.3:a:encode:starlette:0.38.6:*:*:*:*:python:*:*"
+        ],
+        "purl": "pkg:pypi/starlette@0.38.6",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "GHSA-4xh5-x5gv-qwph",
+        "dataSource": "https://github.com/advisories/GHSA-4xh5-x5gv-qwph",
+        "namespace": "github:language:python",
+        "severity": "Medium",
+        "urls": [],
+        "description": "pip's fallback tar extraction doesn't check symbolic links point to extraction directory",
+        "cvss": [],
+        "epss": [
+          {
+            "cve": "CVE-2025-8869",
+            "epss": 0.0002,
+            "percentile": 0.0407,
+            "date": "2025-11-26"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "25.3"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "25.3",
+              "date": "2025-10-28",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.01
+      },
+      "relatedVulnerabilities": [
+        {
+          "id": "CVE-2025-8869",
+          "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-8869",
+          "namespace": "nvd:cpe",
+          "severity": "Medium",
+          "urls": [
+            "https://github.com/pypa/pip/pull/13550",
+            "https://mail.python.org/archives/list/security-announce@python.org/thread/IF5A3GCJY3VH7BVHJKOWOJFKTW7VFQEN/",
+            "https://lists.debian.org/debian-lts-announce/2025/10/msg00028.html"
+          ],
+          "description": "When extracting a tar archive pip may not check symbolic links point into the extraction directory if the tarfile module doesn't implement PEP 706.\nNote that upgrading pip to a \"fixed\" version for this vulnerability doesn't fix all known vulnerabilities that are remediated by using a Python version that implements PEP 706.\n\nNote that this is a vulnerability in pip's fallback implementation of tar extraction for Python versions that don't implement PEP 706\nand therefore are not secure to all vulnerabilities in the Python 'tarfile' module. If you're using a Python version that implements PEP 706\nthen pip doesn't use the \"vulnerable\" fallback code.\n\nMitigations include upgrading to a version of pip that includes the fix, upgrading to a Python version that implements PEP 706 (Python >=3.9.17, >=3.10.12, >=3.11.4, or >=3.12),\napplying the linked patch, or inspecting source distributions (sdists) before installation as is already a best-practice.",
+          "cvss": [
+            {
+              "source": "cna@python.org",
+              "type": "Secondary",
+              "version": "4.0",
+              "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+              "metrics": {
+                "baseScore": 5.9
+              },
+              "vendorMetadata": {}
+            }
+          ],
+          "epss": [
+            {
+              "cve": "CVE-2025-8869",
+              "epss": 0.0002,
+              "percentile": 0.0407,
+              "date": "2025-11-26"
+            }
+          ]
+        }
+      ],
+      "matchDetails": [
+        {
+          "type": "exact-direct-match",
+          "matcher": "python-matcher",
+          "searchedBy": {
+            "language": "python",
+            "namespace": "github:language:python",
+            "package": {
+              "name": "pip",
+              "version": "25.2"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "GHSA-4xh5-x5gv-qwph",
+            "versionConstraint": "<=25.2 (python)"
+          },
+          "fix": {
+            "suggestedVersion": "25.3"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "518b698e3880bafb",
+        "name": "pip",
+        "version": "25.2",
+        "type": "python",
+        "locations": [
+          {
+            "path": "/.venv/Lib/site-packages/pip-25.2.dist-info/METADATA",
+            "accessPath": "/.venv/Lib/site-packages/pip-25.2.dist-info/METADATA",
+            "annotations": {
+              "evidence": "primary"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/pip-25.2.dist-info/RECORD",
+            "accessPath": "/.venv/Lib/site-packages/pip-25.2.dist-info/RECORD",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          },
+          {
+            "path": "/.venv/Lib/site-packages/pip-25.2.dist-info/top_level.txt",
+            "accessPath": "/.venv/Lib/site-packages/pip-25.2.dist-info/top_level.txt",
+            "annotations": {
+              "evidence": "supporting"
+            }
+          }
+        ],
+        "language": "python",
+        "licenses": [
+          "MIT"
+        ],
+        "cpes": [
+          "cpe:2.3:a:pip_developers_\\<distutils_sig_project:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sig_project:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sigproject:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sigproject:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sig_project:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip-developers-\\<distutils-sig:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip-developers-\\<distutils-sig:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sig:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sig:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sigproject:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip-developers-\\<distutils-sig:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip_developers_\\<distutils_sig:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-pip:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-pip:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_pip:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_pip:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pypa:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pypa:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip:python-pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip:python_pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python-pip:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python_pip:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:python:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pypa:pip:25.2:*:*:*:*:*:*:*",
+          "cpe:2.3:a:pip:pip:25.2:*:*:*:*:*:*:*"
+        ],
+        "purl": "pkg:pypi/pip@25.2",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2025-6075",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-6075",
+        "namespace": "nvd:cpe",
+        "severity": "Low",
+        "urls": [
+          "https://github.com/python/cpython/commit/2e6150adccaaf5bd95d4c19dfd04a36e0b325d8c",
+          "https://github.com/python/cpython/commit/631ba3407e3348ccd56ce5160c4fb2c5dc5f4d84",
+          "https://github.com/python/cpython/commit/892747b4cf0f95ba8beb51c0d0658bfaa381ebca",
+          "https://github.com/python/cpython/commit/9ab89c026aa9611c4b0b67c288b8303a480fe742",
+          "https://github.com/python/cpython/commit/c8a5f3435c342964e0a432cc9fb448b7dbecd1ba",
+          "https://github.com/python/cpython/commit/f029e8db626ddc6e3a3beea4eff511a71aaceb5c",
+          "https://github.com/python/cpython/issues/136065",
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/IUP5QJ6D4KK6ULHOMPC7DPNKRYQTQNLA/"
+        ],
+        "description": "If the value passed to os.path.expandvars() is user-controlled a \nperformance degradation is possible when expanding environment \nvariables.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "4.0",
+            "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+            "metrics": {
+              "baseScore": 1.8
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2025-6075",
+            "epss": 0.00017,
+            "percentile": 0.03049,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2025-6075",
+            "cwe": "CWE-400",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.15.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.15.0",
+              "date": "2025-11-07",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.00408
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2025-6075",
+            "versionConstraint": "< 3.15.0 (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          },
+          "fix": {
+            "suggestedVersion": "3.15.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "8836c9166fefe953",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/pythonw.exe",
+            "accessPath": "/.venv/Scripts/pythonw.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    },
+    {
+      "vulnerability": {
+        "id": "CVE-2025-6075",
+        "dataSource": "https://nvd.nist.gov/vuln/detail/CVE-2025-6075",
+        "namespace": "nvd:cpe",
+        "severity": "Low",
+        "urls": [
+          "https://github.com/python/cpython/commit/2e6150adccaaf5bd95d4c19dfd04a36e0b325d8c",
+          "https://github.com/python/cpython/commit/631ba3407e3348ccd56ce5160c4fb2c5dc5f4d84",
+          "https://github.com/python/cpython/commit/892747b4cf0f95ba8beb51c0d0658bfaa381ebca",
+          "https://github.com/python/cpython/commit/9ab89c026aa9611c4b0b67c288b8303a480fe742",
+          "https://github.com/python/cpython/commit/c8a5f3435c342964e0a432cc9fb448b7dbecd1ba",
+          "https://github.com/python/cpython/commit/f029e8db626ddc6e3a3beea4eff511a71aaceb5c",
+          "https://github.com/python/cpython/issues/136065",
+          "https://mail.python.org/archives/list/security-announce@python.org/thread/IUP5QJ6D4KK6ULHOMPC7DPNKRYQTQNLA/"
+        ],
+        "description": "If the value passed to os.path.expandvars() is user-controlled a \nperformance degradation is possible when expanding environment \nvariables.",
+        "cvss": [
+          {
+            "source": "cna@python.org",
+            "type": "Secondary",
+            "version": "4.0",
+            "vector": "CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+            "metrics": {
+              "baseScore": 1.8
+            },
+            "vendorMetadata": {}
+          }
+        ],
+        "epss": [
+          {
+            "cve": "CVE-2025-6075",
+            "epss": 0.00017,
+            "percentile": 0.03049,
+            "date": "2025-11-26"
+          }
+        ],
+        "cwes": [
+          {
+            "cve": "CVE-2025-6075",
+            "cwe": "CWE-400",
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "type": "Secondary"
+          }
+        ],
+        "fix": {
+          "versions": [
+            "3.15.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.15.0",
+              "date": "2025-11-07",
+              "kind": "first-observed"
+            }
+          ]
+        },
+        "advisories": [],
+        "risk": 0.00408
+      },
+      "relatedVulnerabilities": [],
+      "matchDetails": [
+        {
+          "type": "cpe-match",
+          "matcher": "stock-matcher",
+          "searchedBy": {
+            "namespace": "nvd:cpe",
+            "cpes": [
+              "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+            ],
+            "package": {
+              "name": "Python",
+              "version": "3.14.0"
+            }
+          },
+          "found": {
+            "vulnerabilityID": "CVE-2025-6075",
+            "versionConstraint": "< 3.15.0 (unknown)",
+            "cpes": [
+              "cpe:2.3:a:python:python:*:*:*:*:*:*:*:*"
+            ]
+          },
+          "fix": {
+            "suggestedVersion": "3.15.0"
+          }
+        }
+      ],
+      "artifact": {
+        "id": "27ccbacb716d4e24",
+        "name": "Python",
+        "version": "3.14.0",
+        "type": "binary",
+        "locations": [
+          {
+            "path": "/.venv/Scripts/python.exe",
+            "accessPath": "/.venv/Scripts/python.exe",
+            "annotations": {
+              "evidence": "primary"
+            }
+          }
+        ],
+        "language": "",
+        "licenses": [],
+        "cpes": [
+          "cpe:2.3:a:Python:Python:3.14.0:*:*:*:*:*:*:*"
+        ],
+        "purl": "",
+        "upstreams": []
+      }
+    }
+  ],
+  "source": {
+    "type": "directory",
+    "target": "."
+  },
+  "distro": {
+    "name": "",
+    "version": "",
+    "idLike": null
+  },
+  "descriptor": {
+    "name": "grype",
+    "version": "0.104.1",
+    "configuration": {
+      "output": [
+        "json"
+      ],
+      "file": "",
+      "pretty": false,
+      "distro": "",
+      "add-cpes-if-none": false,
+      "output-template-file": "",
+      "check-for-app-update": true,
+      "only-fixed": false,
+      "only-notfixed": false,
+      "ignore-wontfix": "",
+      "platform": "",
+      "search": {
+        "scope": "squashed",
+        "unindexed-archives": false,
+        "indexed-archives": true
+      },
+      "ignore": [
+        {
+          "vulnerability": "",
+          "include-aliases": false,
+          "reason": "",
+          "namespace": "",
+          "fix-state": "",
+          "package": {
+            "name": "kernel-headers",
+            "version": "",
+            "language": "",
+            "type": "rpm",
+            "location": "",
+            "upstream-name": "kernel"
+          },
+          "vex-status": "",
+          "vex-justification": "",
+          "match-type": "exact-indirect-match"
+        },
+        {
+          "vulnerability": "",
+          "include-aliases": false,
+          "reason": "",
+          "namespace": "",
+          "fix-state": "",
+          "package": {
+            "name": "linux(-.*)?-headers-.*",
+            "version": "",
+            "language": "",
+            "type": "deb",
+            "location": "",
+            "upstream-name": "linux.*"
+          },
+          "vex-status": "",
+          "vex-justification": "",
+          "match-type": "exact-indirect-match"
+        },
+        {
+          "vulnerability": "",
+          "include-aliases": false,
+          "reason": "",
+          "namespace": "",
+          "fix-state": "",
+          "package": {
+            "name": "linux-libc-dev",
+            "version": "",
+            "language": "",
+            "type": "deb",
+            "location": "",
+            "upstream-name": "linux"
+          },
+          "vex-status": "",
+          "vex-justification": "",
+          "match-type": "exact-indirect-match"
+        }
+      ],
+      "exclude": [],
+      "externalSources": {
+        "enable": false,
+        "maven": {
+          "searchUpstreamBySha1": true,
+          "baseUrl": "https://search.maven.org/solrsearch/select",
+          "rateLimit": 300000000
+        }
+      },
+      "match": {
+        "java": {
+          "using-cpes": false
+        },
+        "jvm": {
+          "using-cpes": true
+        },
+        "dotnet": {
+          "using-cpes": false
+        },
+        "golang": {
+          "using-cpes": false,
+          "always-use-cpe-for-stdlib": true,
+          "allow-main-module-pseudo-version-comparison": false
+        },
+        "javascript": {
+          "using-cpes": false
+        },
+        "python": {
+          "using-cpes": false
+        },
+        "ruby": {
+          "using-cpes": false
+        },
+        "rust": {
+          "using-cpes": false
+        },
+        "stock": {
+          "using-cpes": true
+        }
+      },
+      "fail-on-severity": "",
+      "registry": {
+        "insecure-skip-tls-verify": false,
+        "insecure-use-http": false,
+        "ca-cert": ""
+      },
+      "show-suppressed": false,
+      "by-cve": false,
+      "SortBy": {
+        "sort-by": "risk"
+      },
+      "name": "",
+      "default-image-pull-source": "",
+      "from": null,
+      "vex-documents": [],
+      "vex-add": [],
+      "match-upstream-kernel-headers": false,
+      "fix-channel": {
+        "redhat-eus": {
+          "apply": "auto",
+          "versions": ">= 8.0"
+        }
+      },
+      "timestamp": true,
+      "db": {
+        "cache-dir": "/.cache/grype/db",
+        "update-url": "https://grype.anchore.io/databases",
+        "ca-cert": "",
+        "auto-update": true,
+        "validate-by-hash-on-start": true,
+        "validate-age": true,
+        "max-allowed-built-age": 432000000000000,
+        "require-update-check": false,
+        "update-available-timeout": 30000000000,
+        "update-download-timeout": 300000000000,
+        "max-update-check-frequency": 7200000000000
+      },
+      "exp": {},
+      "dev": {
+        "db": {
+          "debug": false
+        }
+      }
+    },
+    "db": {
+      "status": {
+        "schemaVersion": "v6.1.3",
+        "from": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.3_2025-11-27T00:25:44Z_1764228132.tar.zst?checksum=sha256%3Af5e975c2860abcbd97dd6ba6df45b1d5608b24a41c6ade6e8a8f3011e992e9ef",
+        "built": "2025-11-27T07:22:12Z",
+        "path": "/.cache/grype/db/6/vulnerability.db",
+        "valid": true
+      },
+      "providers": {
+        "alma": {
+          "captured": "2025-11-27T00:25:44Z",
+          "input": "xxh64:cbfa4506897a58b3"
+        },
+        "alpine": {
+          "captured": "2025-11-27T00:25:45Z",
+          "input": "xxh64:a569631ac7bbfbb4"
+        },
+        "amazon": {
+          "captured": "2025-11-27T00:25:46Z",
+          "input": "xxh64:0c331a7b9f747b1c"
+        },
+        "bitnami": {
+          "captured": "2025-11-27T00:25:54Z",
+          "input": "xxh64:ac1f63d5461ffaa6"
+        },
+        "chainguard": {
+          "captured": "2025-11-27T00:25:57Z",
+          "input": "xxh64:121bab08a9e907d0"
+        },
+        "chainguard-libraries": {
+          "captured": "2025-11-27T00:25:49Z",
+          "input": "xxh64:927dee20052e722a"
+        },
+        "debian": {
+          "captured": "2025-11-27T00:25:58Z",
+          "input": "xxh64:07621ff26cf8201a"
+        },
+        "echo": {
+          "captured": "2025-11-27T00:25:53Z",
+          "input": "xxh64:0f5a1a84c5dfa79e"
+        },
+        "epss": {
+          "captured": "2025-11-27T00:25:51Z",
+          "input": "xxh64:8b2e28226597eb2f"
+        },
+        "github": {
+          "captured": "2025-11-27T00:26:00Z",
+          "input": "xxh64:2e6690ea83e65410"
+        },
+        "kev": {
+          "captured": "2025-11-27T00:25:48Z",
+          "input": "xxh64:be65bda8c3cf1a5c"
+        },
+        "mariner": {
+          "captured": "2025-11-27T00:25:45Z",
+          "input": "xxh64:e037e8d845c03807"
+        },
+        "minimos": {
+          "captured": "2025-11-27T00:25:45Z",
+          "input": "xxh64:99b067eaace08d16"
+        },
+        "nvd": {
+          "captured": "2025-11-27T00:28:29Z",
+          "input": "xxh64:e388530ab460ccc3"
+        },
+        "oracle": {
+          "captured": "2025-11-27T00:25:48Z",
+          "input": "xxh64:6787fe43a3309054"
+        },
+        "rhel": {
+          "captured": "2025-11-27T00:26:44Z",
+          "input": "xxh64:4cb677a3fea5add3"
+        },
+        "sles": {
+          "captured": "2025-11-27T00:26:16Z",
+          "input": "xxh64:580daba1fb91df70"
+        },
+        "ubuntu": {
+          "captured": "2025-11-27T00:28:02Z",
+          "input": "xxh64:37b783c8362ec85c"
+        },
+        "wolfi": {
+          "captured": "2025-11-27T00:25:59Z",
+          "input": "xxh64:73357bd5c7cbbfc3"
+        }
+      }
+    },
+    "timestamp": "2025-11-29T16:39:38.454712447Z"
+  }
+}
