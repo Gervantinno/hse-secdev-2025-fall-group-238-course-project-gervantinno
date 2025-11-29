@@ -35,12 +35,12 @@ jobs:
 
       - name: Generate SBOM (Syft CycloneDX)
         run: |
-          docker run --rm -v $PWD:/work -w /work anchore/syft:latest \
+          docker run --rm -v $PWD:/work -w /work anchore/syft:v1.0.0 \
             packages dir:. -o cyclonedx-json > EVIDENCE/P09/sbom.json
 
       - name: SCA Scan (Grype)
         run: |
-          docker run --rm -v $PWD:/work -w /work anchore/grype:latest \
+          docker run --rm -v $PWD:/work -w /work anchore/grype:v0.77.0 \
             sbom:/work/EVIDENCE/P09/sbom.json -o json > EVIDENCE/P09/sca_report.json || true
 
       - name: Generate SCA Summary
@@ -65,4 +65,3 @@ jobs:
         with:
           name: P09_EVIDENCE
           path: EVIDENCE/P09
-
