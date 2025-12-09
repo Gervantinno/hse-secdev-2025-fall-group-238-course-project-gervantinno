@@ -1,12 +1,19 @@
 name: Security - SBOM & SCA
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
     paths:
-      - '**'
-  workflow_dispatch: {}
+      - "**/*.py"
+      - "requirements*.txt"
+      - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "requirements*.txt"
+      - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
 
 concurrency:
   group: p09-sbom-sca-${{ github.ref }}
