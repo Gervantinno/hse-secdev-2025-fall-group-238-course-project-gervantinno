@@ -1,0 +1,783 @@
+{
+  "artifacts": [
+    {
+      "id": "38fdf6751c9bf073",
+      "name": "SQLAlchemy",
+      "version": "2.0.34",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-SQLAlchemy:python-SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-SQLAlchemy:python_SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_SQLAlchemy:python-SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_SQLAlchemy:python_SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:SQLAlchemy:python-SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:SQLAlchemy:python_SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-SQLAlchemy:SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_SQLAlchemy:SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:SQLAlchemy:SQLAlchemy:2.0.34:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:SQLAlchemy:2.0.34:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/SQLAlchemy@2.0.34",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "SQLAlchemy",
+        "versionConstraint": "==2.0.34"
+      }
+    },
+    {
+      "id": "5556bc84c3fd7057",
+      "name": "black",
+      "version": "24.8.0",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-black:python-black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-black:python_black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_black:python-black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_black:python_black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:black:python-black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:black:python_black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-black:black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_black:black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:black:24.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:black:black:24.8.0:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/black@24.8.0",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "black",
+        "versionConstraint": "==24.8.0"
+      }
+    },
+    {
+      "id": "e7bed1ece329c685",
+      "name": "email-validator",
+      "version": "2.1.1",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-email-validator:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email-validator:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email_validator:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email_validator:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email-validator:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email-validator:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email_validator:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email_validator:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email-validator:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email-validator:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email_validator:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email_validator:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email-validator:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email-validator:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email_validator:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email_validator:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email:python-email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email:python_email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-email:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_email:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:email_validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email:email-validator:2.1.1:*:*:*:*:*:*:*",
+        "cpe:2.3:a:email:email_validator:2.1.1:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/email-validator@2.1.1",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "email-validator",
+        "versionConstraint": "==2.1.1"
+      }
+    },
+    {
+      "id": "2ec8383e62bcfe5b",
+      "name": "fastapi",
+      "version": "0.112.2",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-fastapi:python-fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-fastapi:python_fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_fastapi:python-fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_fastapi:python_fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:fastapi:python-fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:fastapi:python_fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-fastapi:fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_fastapi:fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:fastapi:fastapi:0.112.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:fastapi:0.112.2:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/fastapi@0.112.2",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "fastapi",
+        "versionConstraint": "==0.112.2"
+      }
+    },
+    {
+      "id": "3dd1ae70dbbd7ac6",
+      "name": "httpx",
+      "version": "0.27.2",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-httpx:python-httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-httpx:python_httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_httpx:python-httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_httpx:python_httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:httpx:python-httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:httpx:python_httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-httpx:httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_httpx:httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:httpx:0.27.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:httpx:httpx:0.27.2:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/httpx@0.27.2",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "httpx",
+        "versionConstraint": "==0.27.2"
+      }
+    },
+    {
+      "id": "0197fd4179a8d29b",
+      "name": "isort",
+      "version": "5.13.2",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-isort:python-isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-isort:python_isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_isort:python-isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_isort:python_isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:isort:python-isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:isort:python_isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-isort:isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_isort:isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:isort:5.13.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:isort:isort:5.13.2:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/isort@5.13.2",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "isort",
+        "versionConstraint": "==5.13.2"
+      }
+    },
+    {
+      "id": "44c7faac46f44524",
+      "name": "passlib",
+      "version": "1.7.4",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-passlib:python-passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-passlib:python_passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_passlib:python-passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_passlib:python_passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:passlib:python-passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:passlib:python_passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-passlib:passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_passlib:passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:passlib:passlib:1.7.4:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:passlib:1.7.4:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/passlib@1.7.4",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "passlib",
+        "extras": [
+          "argon2"
+        ],
+        "versionConstraint": "==1.7.4"
+      }
+    },
+    {
+      "id": "9b64e510d6773c51",
+      "name": "pre-commit",
+      "version": "3.8.0",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-pre-commit:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre-commit:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre_commit:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre_commit:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre-commit:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre-commit:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre_commit:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre_commit:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre-commit:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre-commit:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre_commit:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre_commit:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre-commit:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre-commit:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre:python-pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre:python_pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre_commit:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre_commit:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pre:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pre:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:pre_commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre:pre-commit:3.8.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pre:pre_commit:3.8.0:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/pre-commit@3.8.0",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "pre-commit",
+        "versionConstraint": "==3.8.0"
+      }
+    },
+    {
+      "id": "b23838bc3dde9019",
+      "name": "pytest",
+      "version": "8.2.2",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-pytest:python-pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pytest:python_pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pytest:python-pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pytest:python_pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pytest:python-pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pytest:python_pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-pytest:pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_pytest:pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:pytest:pytest:8.2.2:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:pytest:8.2.2:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/pytest@8.2.2",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "pytest",
+        "versionConstraint": "==8.2.2"
+      }
+    },
+    {
+      "id": "78c84238b80b9a09",
+      "name": "python-jose",
+      "version": "3.3.0",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_jose:python-jose:3.3.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_jose:python_jose:3.3.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-jose:3.3.0:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_jose:3.3.0:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/python-jose@3.3.0",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "python-jose",
+        "extras": [
+          "cryptography"
+        ],
+        "versionConstraint": "==3.3.0"
+      }
+    },
+    {
+      "id": "148477dc516e85ad",
+      "name": "python-multipart",
+      "version": "0.0.9",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-multipart:python-multipart:0.0.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-multipart:python_multipart:0.0.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_multipart:python-multipart:0.0.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_multipart:python_multipart:0.0.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-multipart:0.0.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_multipart:0.0.9:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/python-multipart@0.0.9",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "python-multipart",
+        "versionConstraint": "==0.0.9"
+      }
+    },
+    {
+      "id": "b709812cc561fca5",
+      "name": "ruff",
+      "version": "0.6.9",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements-dev.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-ruff:python-ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-ruff:python_ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_ruff:python-ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_ruff:python_ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-ruff:ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_ruff:ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ruff:python-ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ruff:python_ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:ruff:0.6.9:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ruff:ruff:0.6.9:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/ruff@0.6.9",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "ruff",
+        "versionConstraint": "==0.6.9"
+      }
+    },
+    {
+      "id": "770e411da9cbb271",
+      "name": "uvicorn",
+      "version": "0.30.5",
+      "type": "python",
+      "foundBy": "python-index-cataloger",
+      "locations": [
+        {
+          "path": "/requirements.txt",
+          "annotations": {
+            "evidence": "primary"
+          }
+        }
+      ],
+      "licenses": [],
+      "language": "python",
+      "cpes": [
+        "cpe:2.3:a:python-uvicorn:python-uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-uvicorn:python_uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_uvicorn:python-uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_uvicorn:python_uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python-uvicorn:uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python_uvicorn:uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:uvicorn:python-uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:uvicorn:python_uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python-uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:python_uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:uvicorn:uvicorn:0.30.5:*:*:*:*:*:*:*",
+        "cpe:2.3:a:python:uvicorn:0.30.5:*:*:*:*:*:*:*"
+      ],
+      "purl": "pkg:pypi/uvicorn@0.30.5",
+      "metadataType": "PythonRequirementsMetadata",
+      "metadata": {
+        "name": "uvicorn",
+        "versionConstraint": "==0.30.5"
+      }
+    }
+  ],
+  "artifactRelationships": [
+    {
+      "parent": "0197fd4179a8d29b",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "148477dc516e85ad",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "2ec8383e62bcfe5b",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "38fdf6751c9bf073",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "3dd1ae70dbbd7ac6",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "44c7faac46f44524",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "5556bc84c3fd7057",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "0197fd4179a8d29b",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "148477dc516e85ad",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "2ec8383e62bcfe5b",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "38fdf6751c9bf073",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "3dd1ae70dbbd7ac6",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "44c7faac46f44524",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "5556bc84c3fd7057",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "770e411da9cbb271",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "78c84238b80b9a09",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "9b64e510d6773c51",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "b23838bc3dde9019",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "b709812cc561fca5",
+      "type": "contains"
+    },
+    {
+      "parent": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+      "child": "e7bed1ece329c685",
+      "type": "contains"
+    },
+    {
+      "parent": "770e411da9cbb271",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "78c84238b80b9a09",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    },
+    {
+      "parent": "9b64e510d6773c51",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "b23838bc3dde9019",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "b709812cc561fca5",
+      "child": "4ba17b6e41ad51a8",
+      "type": "evident-by"
+    },
+    {
+      "parent": "e7bed1ece329c685",
+      "child": "26ca2b7dc025d550",
+      "type": "evident-by"
+    }
+  ],
+  "files": [
+    {
+      "id": "4ba17b6e41ad51a8",
+      "location": {
+        "path": "/requirements-dev.txt"
+      }
+    },
+    {
+      "id": "26ca2b7dc025d550",
+      "location": {
+        "path": "/requirements.txt"
+      }
+    }
+  ],
+  "source": {
+    "id": "56c9e1c4b5360a5b089004396ed37fe3a20f7c4f5954072098039789ba3ab68a",
+    "name": "/src",
+    "version": "",
+    "type": "directory",
+    "metadata": {
+      "path": "/src"
+    }
+  },
+  "distro": {},
+  "descriptor": {
+    "name": "syft",
+    "version": "0.88.0",
+    "configuration": {
+      "configPath": "",
+      "verbosity": 0,
+      "quiet": false,
+      "output": [
+        "json"
+      ],
+      "output-template-path": "",
+      "file": "",
+      "check-for-app-update": true,
+      "dev": {
+        "profile-cpu": false,
+        "profile-mem": false
+      },
+      "log": {
+        "structured": false,
+        "level": "warn",
+        "file-location": ""
+      },
+      "catalogers": null,
+      "package": {
+        "cataloger": {
+          "enabled": true,
+          "scope": "Squashed"
+        },
+        "search-unindexed-archives": false,
+        "search-indexed-archives": true
+      },
+      "golang": {
+        "search-local-mod-cache-licenses": false,
+        "local-mod-cache-dir": "",
+        "search-remote-licenses": false,
+        "proxy": "",
+        "no-proxy": ""
+      },
+      "linux-kernel": {
+        "catalog-modules": true
+      },
+      "python": {
+        "guess-unpinned-requirements": false
+      },
+      "attest": {},
+      "file-metadata": {
+        "cataloger": {
+          "enabled": false,
+          "scope": "Squashed"
+        },
+        "digests": [
+          "sha256"
+        ]
+      },
+      "file-classification": {
+        "cataloger": {
+          "enabled": false,
+          "scope": "Squashed"
+        }
+      },
+      "file-contents": {
+        "cataloger": {
+          "enabled": false,
+          "scope": "Squashed"
+        },
+        "skip-files-above-size": 1048576,
+        "globs": []
+      },
+      "secrets": {
+        "cataloger": {
+          "enabled": false,
+          "scope": "AllLayers"
+        },
+        "additional-patterns": {},
+        "exclude-pattern-names": [],
+        "reveal-values": false,
+        "skip-files-above-size": 1048576
+      },
+      "registry": {
+        "insecure-skip-tls-verify": false,
+        "insecure-use-http": false,
+        "auth": []
+      },
+      "exclude": [],
+      "platform": "",
+      "name": "",
+      "source": {
+        "name": "",
+        "version": "",
+        "file": {
+          "digests": [
+            "sha256"
+          ]
+        }
+      },
+      "parallelism": 1,
+      "default-image-pull-source": "",
+      "base-path": "",
+      "exclude-binary-overlap-by-ownership": true
+    }
+  },
+  "schema": {
+    "version": "10.0.1",
+    "url": "https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-10.0.1.json"
+  },
+  "metadata": {
+    "vcs_ref": "b940047c2f39003fc83ab32e784395d7947bc09e"
+  }
+}
