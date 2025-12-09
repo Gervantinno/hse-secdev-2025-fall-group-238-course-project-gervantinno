@@ -1,0 +1,15 @@
+title = "course default gitleaks config"
+
+[extend]
+# use built-in rules
+
+[allowlist]
+description = "ignore non-sensitive patterns and project artifacts"
+paths = [
+  "EVIDENCE/",   # reports and artifacts — must ignore
+]
+commits = []
+regexes = [
+  '''TEST_SECRET_DO_NOT_USE''', # test-only marker; safe to allow
+  '''dev-secret-key-change-in-production''' # hardcoded dev secret marker — allowlisted because it's used for local dev; track in triage
+]

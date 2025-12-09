@@ -1,0 +1,21 @@
+rules:
+  - id: auth-hardcoded-dev-secret
+    languages: [python]
+    message: "Hard-coded development JWT secret detected — use secrets backend (get_secret) or env var."
+    severity: ERROR
+    patterns:
+      - pattern: SECRET_KEY = "dev-secret-key-change-in-production"
+    metadata:
+      category: security
+      cwe: "CWE-798"
+
+  - id: py-unsafe-html-echo
+    languages: [python]
+    message: "Potentially unsafe HTMLResponse with direct user data interpolation"
+    severity: WARNING
+    patterns:
+      - pattern: |
+          HTMLResponse(f"...{$X}...")
+    metadata:
+      category: security
+      cwe: "CWE-79"
