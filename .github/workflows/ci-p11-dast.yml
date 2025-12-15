@@ -1,0 +1,82 @@
+name: P11 - DAST (OWASP ZAP baseline)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**/*.py"
+      - "app/**"
+      - "security/**"
+      - ".github/workflows/ci-p11-dast.yml"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "app/**"
+      - "security/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure evidence dir
+        run: mkdir -p EVIDENCE/P11
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run app
+        # adjust the module and port if your app differs
+        run: |
+          PORT=8080
+          uvicorn app.main:app --host 0.0.0.0 --port $PORT &
+          # wait for health endpoint
+          timeout 30 bash -c 'until curl -sf http://localhost:8080/healthz; do sleep 1; done'
+
+      - name: ZAP Baseline
+        # pinned zap image; update tag intentionally when upgrading
+        run: |
+          TARGET=http://localhost:8080
+          OUT_HTML=zap_baseline.html
+          OUT_JSON=zap_baseline.json
+          # run zap baseline (uses host networking to reach localhost)
+          docker run --rm --network host -v ${{ github.workspace }}:/zap/wrk owasp/zap2docker-stable:2.12.0 \
+            zap-baseline.py -t $TARGET -r $OUT_HTML -J $OUT_JSON -d || true
+          # move reports to evidence dir
+          mv $OUT_HTML $OUT_JSON EVIDENCE/P11/ || true
+
+      - name: Generate P11 summary
+        run: |
+          SHA=${{ github.sha }}
+          OUT=EVIDENCE/P11/p11_summary-${SHA}.md
+          echo "# P11 DAST (ZAP baseline) summary for commit ${SHA}" > $OUT
+          echo "" >> $OUT
+          echo "Target: http://localhost:8080/" >> $OUT
+          echo "Reports: EVIDENCE/P11/zap_baseline.html, EVIDENCE/P11/zap_baseline.json" >> $OUT
+          echo "" >> $OUT
+          echo "CI run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $OUT
+
+      - name: Upload P11 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P11_EVIDENCE_${{ github.sha }}
+          path: EVIDENCE/P11
