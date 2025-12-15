@@ -1,0 +1,81 @@
+name: Security - SBOM & SCA
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**/*.py"
+      - "requirements*.txt"
+      - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "requirements*.txt"
+      - ".github/workflows/ci-sbom-sca.yml"
+      - "scripts/**"
+
+concurrency:
+  group: p09-sbom-sca-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sbom_sca:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure tools (jq)
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Create evidence dir
+        run: mkdir -p EVIDENCE/P09
+
+      - name: Generate SBOM with pinned Syft
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/src" anchore/syft:v0.88.0 -o json dir:/src > EVIDENCE/P09/sbom-${{ github.sha }}.json
+          jq --arg sha "${{ github.sha }}" '.metadata.vcs_ref = $sha' EVIDENCE/P09/sbom-${{ github.sha }}.json > EVIDENCE/P09/sbom-${{ github.sha }}.tmp && mv EVIDENCE/P09/sbom-${{ github.sha }}.tmp EVIDENCE/P09/sbom-${{ github.sha }}.json
+
+      - name: Run SCA (Grype) with pinned image
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/src" anchore/grype:v0.86.0 -o json dir:/src > EVIDENCE/P09/sca_report-${{ github.sha }}.json || true
+
+      - name: Generate SCA summary (sca_summary.md)
+        run: |
+          REPORT=EVIDENCE/P09/sca_report-${{ github.sha }}.json
+          OUT=EVIDENCE/P09/sca_summary-${{ github.sha }}.md
+          echo "# SCA summary for commit ${{ github.sha }}" > $OUT
+          if [ -f "$REPORT" ] && [ -s "$REPORT" ]; then
+            echo "" >> $OUT
+            echo "## Vulnerability counts by severity" >> $OUT
+            jq -r '[.matches[]?.vulnerability.severity] | group_by(.) | map({severity: .[0], count: length})' $REPORT | jq -r '.[] | "- \(.severity): \(.count)"' >> $OUT || true
+            echo "" >> $OUT
+            echo "## Top findings (by CVE) — first 10" >> $OUT
+            jq -r '.matches[] | {id:.vulnerability.id, pkg:.artifact.name, severity:.vulnerability.severity} | "\(.severity) \(.id) — \(.pkg)"' $REPORT | sort | uniq -c | sort -rn | head -n 10 >> $OUT || true
+            echo "" >> $OUT
+            # basic action guidance when Critical/High found
+            CRITICAL_COUNT=$(jq '[.matches[]?.vulnerability.severity] | map(select(.=="Critical")) | length' $REPORT)
+            HIGH_COUNT=$(jq '[.matches[]?.vulnerability.severity] | map(select(.=="High")) | length' $REPORT)
+            echo "## Suggested next steps" >> $OUT
+            echo "- If any Critical/High findings exist, create Issue(s) and set priority=High." >> $OUT
+            if [ "$CRITICAL_COUNT" -gt "0" ]; then
+              echo "- Found Critical vulnerabilities ($CRITICAL_COUNT). Suggested action: immediate upgrade or mitigation (apply patch, pin fixed version, or add temporary waiver with review date)." >> $OUT
+            fi
+            if [ "$HIGH_COUNT" -gt "0" ]; then
+              echo "- Found High vulnerabilities ($HIGH_COUNT). Suggested action: schedule dependency updates in next sprint; consider backport/waiver only with justification." >> $OUT
+            fi
+            echo "- For all findings: add triage notes to Issue/PR and reference EVIDENCE/P09/sca_report-${{ github.sha }}.json and sbom-${{ github.sha }}.json." >> $OUT
+          else
+            echo "No SCA report generated or report empty." >> $OUT
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: p09-evidence-${{ github.sha }}
+          path: |
+            EVIDENCE/P09/sbom-${{ github.sha }}.json
+            EVIDENCE/P09/sca_report-${{ github.sha }}.json
+            EVIDENCE/P09/sca_summary-${{ github.sha }}.md
