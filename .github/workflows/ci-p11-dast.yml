@@ -54,14 +54,31 @@ jobs:
       - name: ZAP Baseline
         # pinned zap image; update tag intentionally when upgrading
         run: |
+          SHA=${{ github.sha }}
           TARGET=http://localhost:8080
           OUT_HTML=zap_baseline.html
           OUT_JSON=zap_baseline.json
-          # run zap baseline (uses host networking to reach localhost)
+          OUT_STD=EVIDENCE/P11/zap-${SHA}.stdout
+          OUT_ERR=EVIDENCE/P11/zap-${SHA}.stderr
+
+          # run zap baseline (uses host networking to reach localhost) and capture logs
           docker run --rm --network host -v ${{ github.workspace }}:/zap/wrk owasp/zap2docker-stable:2.12.0 \
-            zap-baseline.py -t $TARGET -r $OUT_HTML -J $OUT_JSON -d || true
-          # move reports to evidence dir
-          mv $OUT_HTML $OUT_JSON EVIDENCE/P11/ || true
+            zap-baseline.py -t $TARGET -r $OUT_HTML -J $OUT_JSON -d > $OUT_STD 2> $OUT_ERR || true
+
+          # move reports to evidence dir if created
+          if [ -s "$OUT_HTML" ] || [ -s "$OUT_JSON" ]; then
+            mv $OUT_HTML $OUT_JSON EVIDENCE/P11/ || true
+          else
+            echo "ZAP did not produce reports at $OUT_HTML or $OUT_JSON" > EVIDENCE/P11/zap-${SHA}.error
+            echo "STDOUT:" >> EVIDENCE/P11/zap-${SHA}.error
+            if [ -s "$OUT_STD" ]; then cat $OUT_STD >> EVIDENCE/P11/zap-${SHA}.error; fi
+            echo "" >> EVIDENCE/P11/zap-${SHA}.error
+            echo "STDERR:" >> EVIDENCE/P11/zap-${SHA}.error
+            if [ -s "$OUT_ERR" ]; then cat $OUT_ERR >> EVIDENCE/P11/zap-${SHA}.error; fi
+            # ensure placeholder files exist for CI artifacts
+            echo '{}' > EVIDENCE/P11/$OUT_JSON || true
+            echo '<html><body>No ZAP report generated</body></html>' > EVIDENCE/P11/$OUT_HTML || true
+          fi
 
       - name: Generate P11 summary
         run: |
