@@ -48,8 +48,8 @@ jobs:
         run: |
           PORT=8080
           uvicorn app.main:app --host 0.0.0.0 --port $PORT &
-          # wait for health endpoint
-          timeout 30 bash -c 'until curl -sf http://localhost:8080/healthz; do sleep 1; done'
+          # wait for health endpoint (app exposes /health)
+          timeout 60 bash -c 'until curl -sf http://localhost:8080/health; do sleep 1; done'
 
       - name: ZAP Baseline
         # pinned zap image; update tag intentionally when upgrading
