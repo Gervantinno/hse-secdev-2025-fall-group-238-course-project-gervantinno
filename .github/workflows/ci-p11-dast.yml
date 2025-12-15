@@ -52,10 +52,16 @@ jobs:
           timeout 60 bash -c 'until curl -sf http://localhost:8080/health; do sleep 1; done'
 
       - name: Optional Docker Hub login (for pulling ZAP image)
-        if: ${{ secrets.DOCKERHUB_USERNAME && secrets.DOCKERHUB_PASSWORD }}
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
-          echo "Logging in to Docker Hub"
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_PASSWORD" ]; then
+            echo "Logging in to Docker Hub"
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          else
+            echo "DOCKERHUB credentials not provided; skipping docker login"
+          fi
 
       - name: ZAP Baseline (action)
         uses: zaproxy/action-baseline@v0.6.0
