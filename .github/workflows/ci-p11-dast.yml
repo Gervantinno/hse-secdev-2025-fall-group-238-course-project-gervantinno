@@ -6,13 +6,11 @@ on:
     paths:
       - "**/*.py"
       - "app/**"
-      - "security/**"
       - ".github/workflows/ci-p11-dast.yml"
   pull_request:
     paths:
       - "**/*.py"
       - "app/**"
-      - "security/**"
 
 permissions:
   contents: read
@@ -34,73 +32,36 @@ jobs:
         run: mkdir -p EVIDENCE/P11
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
 
       - name: Run app
-        # adjust the module and port if your app differs
         run: |
-          PORT=8080
-          uvicorn app.main:app --host 0.0.0.0 --port $PORT &
-          # wait for health endpoint (app exposes /health)
-          timeout 60 bash -c 'until curl -sf http://localhost:8080/health; do sleep 1; done'
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          timeout 60 bash -c 'until curl -sf http://localhost:8000/health; do sleep 1; done'
 
-      - name: Optional Docker Hub login (for pulling ZAP image)
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Run ZAP baseline
         run: |
-          if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_PASSWORD" ]; then
-            echo "Logging in to Docker Hub"
-            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          else
-            echo "DOCKERHUB credentials not provided; skipping docker login"
-          fi
+          docker run --rm --network host \
+            -v $PWD:/zap/wrk \
+            owasp/zap2docker-stable \
+            zap-baseline.py \
+              -t http://localhost:8000 \
+              -r zap_baseline.html \
+              -J zap_baseline.json \
+              -d || true
 
-      - name: ZAP Baseline (action)
-        uses: zaproxy/action-baseline@v0.6.0
-        with:
-          target: "http://localhost:8080"
-          # don't fail the job on alerts
-          fail_action: "false"
-
-      - name: Collect ZAP reports
-        run: |
-          SHA=${{ github.sha }}
-          mkdir -p EVIDENCE/P11
-          found=false
-          # look for typical ZAP report filenames or any file mentioning zap
-          for f in $(find . -maxdepth 3 -type f \( -iname 'zap_baseline.*' -o -iname 'zap_report.*' -o -iname '*zap*' \) 2>/dev/null); do
-            echo "Found report: $f"
-            mv "$f" EVIDENCE/P11/ || true
-            found=true
-          done
-          if [ "$found" = false ]; then
-            echo "No ZAP reports found" > EVIDENCE/P11/zap-${SHA}.error
-            echo '{}' > EVIDENCE/P11/zap_baseline.json || true
-            echo '<html><body>No ZAP report generated</body></html>' > EVIDENCE/P11/zap_baseline.html || true
-          fi
-
-      - name: Generate P11 summary
-        run: |
-          SHA=${{ github.sha }}
-          OUT=EVIDENCE/P11/p11_summary-${SHA}.md
-          echo "# P11 DAST (ZAP baseline) summary for commit ${SHA}" > $OUT
-          echo "" >> $OUT
-          echo "Target: http://localhost:8080/" >> $OUT
-          echo "Reports: EVIDENCE/P11/zap_baseline.html, EVIDENCE/P11/zap_baseline.json" >> $OUT
-          echo "" >> $OUT
-          echo "CI run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $OUT
+          mv zap_baseline.* EVIDENCE/P11/
 
       - name: Upload P11 evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: P11_EVIDENCE_${{ github.sha }}
+          name: P11_EVIDENCE
           path: EVIDENCE/P11
