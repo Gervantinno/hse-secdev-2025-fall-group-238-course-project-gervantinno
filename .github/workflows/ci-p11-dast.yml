@@ -51,33 +51,30 @@ jobs:
           # wait for health endpoint (app exposes /health)
           timeout 60 bash -c 'until curl -sf http://localhost:8080/health; do sleep 1; done'
 
-      - name: ZAP Baseline
-        # pinned zap image; update tag intentionally when upgrading
+      - name: ZAP Baseline (action)
+        uses: zaproxy/action-baseline@v0.6.0
+        with:
+          target: "http://localhost:8080"
+          # don't fail the job on alerts
+          fail_action: "false"
+          # enable debug output
+          debug: "true"
+
+      - name: Collect ZAP reports
         run: |
           SHA=${{ github.sha }}
-          TARGET=http://localhost:8080
-          OUT_HTML=zap_baseline.html
-          OUT_JSON=zap_baseline.json
-          OUT_STD=EVIDENCE/P11/zap-${SHA}.stdout
-          OUT_ERR=EVIDENCE/P11/zap-${SHA}.stderr
-
-          # run zap baseline (uses host networking to reach localhost) and capture logs
-          docker run --rm --network host -v ${{ github.workspace }}:/zap/wrk owasp/zap2docker-stable:2.12.0 \
-            zap-baseline.py -t $TARGET -r $OUT_HTML -J $OUT_JSON -d > $OUT_STD 2> $OUT_ERR || true
-
-          # move reports to evidence dir if created
-          if [ -s "$OUT_HTML" ] || [ -s "$OUT_JSON" ]; then
-            mv $OUT_HTML $OUT_JSON EVIDENCE/P11/ || true
-          else
-            echo "ZAP did not produce reports at $OUT_HTML or $OUT_JSON" > EVIDENCE/P11/zap-${SHA}.error
-            echo "STDOUT:" >> EVIDENCE/P11/zap-${SHA}.error
-            if [ -s "$OUT_STD" ]; then cat $OUT_STD >> EVIDENCE/P11/zap-${SHA}.error; fi
-            echo "" >> EVIDENCE/P11/zap-${SHA}.error
-            echo "STDERR:" >> EVIDENCE/P11/zap-${SHA}.error
-            if [ -s "$OUT_ERR" ]; then cat $OUT_ERR >> EVIDENCE/P11/zap-${SHA}.error; fi
-            # ensure placeholder files exist for CI artifacts
-            echo '{}' > EVIDENCE/P11/$OUT_JSON || true
-            echo '<html><body>No ZAP report generated</body></html>' > EVIDENCE/P11/$OUT_HTML || true
+          mkdir -p EVIDENCE/P11
+          found=false
+          # look for typical ZAP report filenames or any file mentioning zap
+          for f in $(find . -maxdepth 3 -type f \( -iname 'zap_baseline.*' -o -iname 'zap_report.*' -o -iname '*zap*' \) 2>/dev/null); do
+            echo "Found report: $f"
+            mv "$f" EVIDENCE/P11/ || true
+            found=true
+          done
+          if [ "$found" = false ]; then
+            echo "No ZAP reports found" > EVIDENCE/P11/zap-${SHA}.error
+            echo '{}' > EVIDENCE/P11/zap_baseline.json || true
+            echo '<html><body>No ZAP report generated</body></html>' > EVIDENCE/P11/zap_baseline.html || true
           fi
 
       - name: Generate P11 summary
