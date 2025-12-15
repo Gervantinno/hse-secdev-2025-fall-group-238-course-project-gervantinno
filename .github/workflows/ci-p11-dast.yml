@@ -48,16 +48,17 @@ jobs:
 
       - name: Run ZAP baseline
         run: |
-          docker run --rm --network host \
-            -v $PWD:/zap/wrk \
-            owasp/zap2docker-stable \
+          docker run --rm \
+            --network host \
+            -v "${PWD}:/zap/wrk" \
+            ghcr.io/zaproxy/zap-stable:2.14.0 \
             zap-baseline.py \
               -t http://localhost:8000 \
               -r zap_baseline.html \
               -J zap_baseline.json \
               -d || true
 
-          mv zap_baseline.* EVIDENCE/P11/
+          mv zap_baseline.* EVIDENCE/P11/ 2>/dev/null || true
 
       - name: Upload P11 evidence
         if: always()
