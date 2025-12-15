@@ -46,11 +46,12 @@ jobs:
       - name: ZAP Baseline
         run: |
           docker run --rm \
-            --network host \
-            -v "${PWD}:/zap/wrk" \
-            ghcr.io/zaproxy/zap-stable:2.14.0 \
-            zap-baseline.py \
-              -t http://localhost:8080 \
+          --network host \
+          -v "${PWD}:/zap/wrk" \
+          ghcr.io/zaproxy/zap-stable:2.14.0 \
+          zap-baseline.py \
+              -t http://localhost:8080/openapi.json \
+              -f openapi \
               -r zap_baseline.html \
               -J zap_baseline.json \
               -d || true
