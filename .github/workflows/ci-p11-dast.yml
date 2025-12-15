@@ -51,14 +51,18 @@ jobs:
           # wait for health endpoint (app exposes /health)
           timeout 60 bash -c 'until curl -sf http://localhost:8080/health; do sleep 1; done'
 
+      - name: Optional Docker Hub login (for pulling ZAP image)
+        if: ${{ secrets.DOCKERHUB_USERNAME && secrets.DOCKERHUB_PASSWORD }}
+        run: |
+          echo "Logging in to Docker Hub"
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
       - name: ZAP Baseline (action)
         uses: zaproxy/action-baseline@v0.6.0
         with:
           target: "http://localhost:8080"
           # don't fail the job on alerts
           fail_action: "false"
-          # enable debug output
-          debug: "true"
 
       - name: Collect ZAP reports
         run: |
