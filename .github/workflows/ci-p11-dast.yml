@@ -39,9 +39,9 @@ jobs:
 
       - name: Run app
         run: |
-          uvicorn app.main:app --host 0.0.0.0 --port 8080 &
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
           echo "Waiting for app to be ready..."
-          timeout 60 bash -c 'until curl -sf http://localhost:8080/; do sleep 2; done'
+          timeout 60 bash -c 'until curl -sf http://localhost:8000/health; do sleep 2; done'
 
       - name: ZAP Baseline
         run: |
@@ -50,7 +50,7 @@ jobs:
           -v "${PWD}:/zap/wrk" \
           ghcr.io/zaproxy/zap-stable:2.14.0 \
           zap-baseline.py \
-              -t http://localhost:8080/openapi.json \
+              -t http://localhost:8000/openapi.json \
               -f openapi \
               -r zap_baseline.html \
               -J zap_baseline.json \
