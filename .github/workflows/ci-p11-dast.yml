@@ -119,81 +119,90 @@ jobs:
             ln -sf "commits/${SHORT_SHA}/zap_baseline.html" "EVIDENCE/P11/zap_baseline.html" 2>/dev/null || true
             ln -sf "commits/${SHORT_SHA}/zap_baseline.json" "EVIDENCE/P11/zap_baseline.json" 2>/dev/null || true
 
-            cat > "EVIDENCE/P11/commits/${SHORT_SHA}/README.md" << 'EOF'
-            # ZAP Scan Report - Commit ${SHORT_SHA}
+            # Create README.md using echo instead of HEREDOC
+            echo "# ZAP Scan Report - Commit ${SHORT_SHA}" > "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "**Commit SHA:** ${SHORT_SHA} (${{ steps.commit.outputs.full_sha }})" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "**Scan Date:** $(date)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "**Target URL:** http://localhost:${APP_PORT}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "**Workflow Run:** ${{ github.run_id }}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "## Quick Links:" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- [HTML Report](zap_baseline.html)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- [JSON Report](zap_baseline.json)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "## Access from main:" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- Latest: [../latest/zap_baseline.html](../latest/zap_baseline.html)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- This commit: [zap_baseline.html](zap_baseline.html)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "## Raw GitHub URLs:" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- HTML: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.html" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
+            echo "- JSON: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.json" >> "EVIDENCE/P11/commits/${SHORT_SHA}/README.md"
 
-            **Commit SHA:** ${SHORT_SHA} (${{ steps.commit.outputs.full_sha }})
-            **Scan Date:** $(date)
-            **Target URL:** http://localhost:${APP_PORT}
-            **Workflow Run:** ${{ github.run_id }}
+            # Create main README.md
+            echo "# P11 - DAST (ZAP Baseline) Reports" > "EVIDENCE/P11/README.md"
+            echo "" >> "EVIDENCE/P11/README.md"
+            echo "## Latest Scan" >> "EVIDENCE/P11/README.md"
+            echo "- **HTML Report:** [latest/zap_baseline.html](latest/zap_baseline.html)" >> "EVIDENCE/P11/README.md"
+            echo "- **JSON Report:** [latest/zap_baseline.json](latest/zap_baseline.json)" >> "EVIDENCE/P11/README.md"
+            echo "- **Commit:** ${SHORT_SHA}" >> "EVIDENCE/P11/README.md"
+            echo "- **Date:** $(date)" >> "EVIDENCE/P11/README.md"
+            echo "" >> "EVIDENCE/P11/README.md"
+            echo "## Historical Scans" >> "EVIDENCE/P11/README.md"
 
-            ## Quick Links:
-            - [HTML Report](zap_baseline.html)
-            - [JSON Report](zap_baseline.json)
+            # Add historical scans if any
+            if ls -d EVIDENCE/P11/commits/*/ 2>/dev/null; then
+              ls -d EVIDENCE/P11/commits/*/ 2>/dev/null | sort -r | while read dir; do
+                commit=$(basename "$dir")
+                date_str=$(stat -c %y "$dir/zap_baseline.html" 2>/dev/null | cut -d' ' -f1 || echo 'unknown')
+                echo "- [${commit}](commits/${commit}/) - ${date_str}" >> "EVIDENCE/P11/README.md"
+              done
+            else
+              echo "No historical scans yet." >> "EVIDENCE/P11/README.md"
+            fi
 
-            ## Access from main:
-            - Latest: [../latest/zap_baseline.html](../latest/zap_baseline.html)
-            - This commit: [zap_baseline.html](zap_baseline.html)
+            echo "" >> "EVIDENCE/P11/README.md"
+            echo "## How to view" >> "EVIDENCE/P11/README.md"
+            echo "1. Click on the HTML links above to view reports" >> "EVIDENCE/P11/README.md"
+            echo "2. Or use raw GitHub URLs for direct access" >> "EVIDENCE/P11/README.md"
+            echo "3. Latest reports are always in \`latest/\` directory" >> "EVIDENCE/P11/README.md"
+            echo "" >> "EVIDENCE/P11/README.md"
+            echo "## Workflow" >> "EVIDENCE/P11/README.md"
+            echo "Scans are triggered automatically on push to main or manually via workflow_dispatch." >> "EVIDENCE/P11/README.md"
 
-            ## Raw GitHub URLs:
-            - HTML: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.html
-            - JSON: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.json
-            EOF
-
-            cat > "EVIDENCE/P11/README.md" << 'EOF'
-            # P11 - DAST (ZAP Baseline) Reports
-
-            ## Latest Scan
-            - **HTML Report:** [latest/zap_baseline.html](latest/zap_baseline.html)
-            - **JSON Report:** [latest/zap_baseline.json](latest/zap_baseline.json)
-            - **Commit:** ${SHORT_SHA}
-            - **Date:** $(date)
-
-            ## Historical Scans
-            $(ls -d commits/*/ 2>/dev/null | sort -r | while read dir; do
-              commit=$(basename $dir)
-              echo "- [${commit}](commits/${commit}/) - $(stat -c %y "commits/${commit}/zap_baseline.html" 2>/dev/null | cut -d' ' -f1 || echo 'unknown')"
-            done)
-
-            ## How to view
-            1. Click on the HTML links above to view reports
-            2. Or use raw GitHub URLs for direct access
-            3. Latest reports are always in \`latest/\` directory
-
-            ## Workflow
-            Scans are triggered automatically on push to main or manually via workflow_dispatch.
-            EOF
-
+            # Create summary.md with jq if available
             if command -v jq &>/dev/null || sudo apt-get install -y jq; then
               HIGH=$(jq '.site[0].alerts[] | select(.riskcode == "3") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
               MEDIUM=$(jq '.site[0].alerts[] | select(.riskcode == "2") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
               LOW=$(jq '.site[0].alerts[] | select(.riskcode == "1") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
               INFO=$(jq '.site[0].alerts[] | select(.riskcode == "0") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
 
-              cat > "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md" << EOF
-              # Scan Summary - ${SHORT_SHA}
+              echo "# Scan Summary - ${SHORT_SHA}" > "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "## Results" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Target:** http://localhost:${APP_PORT}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Commit:** ${SHORT_SHA}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Scan Date:** $(date)" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Total URLs:** 3" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **High:** ${HIGH}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Medium:** ${MEDIUM}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Low:** ${LOW}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Informational:** ${INFO}" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "- **Passed:** 68" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "## Warnings Found:" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
 
-              ## Results
-              - **Target:** http://localhost:${APP_PORT}
-              - **Commit:** ${SHORT_SHA}
-              - **Scan Date:** $(date)
-              - **Total URLs:** 3
-              - **High:** ${HIGH}
-              - **Medium:** ${MEDIUM}
-              - **Low:** ${LOW}
-              - **Informational:** ${INFO}
-              - **Passed:** 68
+              # Extract warnings from JSON
+              WARNINGS=$(jq -r '.site[0].alerts[] | "### \(.name)\n- **Risk:** \(.riskdesc)\n- **URLs:** \(.instances[]?.uri // .uri)\n- **Description:** \(.desc[0:200])..."' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null || echo "No detailed warnings available")
+              echo "$WARNINGS" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
 
-              ## Warnings Found:
-              $(jq -r '.site[0].alerts[] | "### \(.name)\n- **Risk:** \(.riskdesc)\n- **URLs:** \(.instances[]?.uri // .uri)\n- **Description:** \(.desc[0:200])..."' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null || echo "No detailed warnings available")
-
-              ## Recommendations
-              $(if [ "$HIGH" -gt 0 ] || [ "$MEDIUM" -gt 0 ]; then
-                echo "⚠️ Review HIGH/MEDIUM severity findings"
+              echo "" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              echo "## Recommendations" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              if [ "$HIGH" -gt 0 ] || [ "$MEDIUM" -gt 0 ]; then
+                echo "⚠️ Review HIGH/MEDIUM severity findings" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
               else
-                echo "✅ No critical issues found"
-              fi)
-              EOF
+                echo "✅ No critical issues found" >> "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
+              fi
             fi
           else
             echo "✗ ZAP reports not generated"
@@ -245,19 +254,19 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "P11: DAST scan report for commit ${SHORT_SHA} [skip ci]
 
-          ZAP baseline scan results:
-          - Target: http://localhost:${{ env.APP_PORT }}
-          - Commit: ${SHORT_SHA}
-          - Files: EVIDENCE/P11/commits/${SHORT_SHA}/
-          - Latest: EVIDENCE/P11/latest/"
+            ZAP baseline scan results:
+            - Target: http://localhost:${{ env.APP_PORT }}
+            - Commit: ${SHORT_SHA}
+            - Files: EVIDENCE/P11/commits/${SHORT_SHA}/
+            - Latest: EVIDENCE/P11/latest/"
 
-                      if [ "${{ github.event_name }}" != "pull_request" ]; then
-                        git pull --rebase
-                        git push
+                        if [ "${{ github.event_name }}" != "pull_request" ]; then
+                          git pull --rebase
+                          git push
+                        fi
+                      else
+                        echo "No changes to commit"
                       fi
-                    else
-                      echo "No changes to commit"
-                    fi
 
       - name: Update PR description (for PRs)
         if: github.event_name == 'pull_request'
