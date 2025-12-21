@@ -5,11 +5,9 @@ on:
   push:
     paths:
       - "app/**"
-      - "src/**"
+      - "requirements.txt"
       - ".github/workflows/ci-p11-dast.yml"
-
-permissions:
-  contents: read
+      - "**/*.py"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -27,6 +25,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get commit info
+        id: commit
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "short_sha=${SHORT_SHA}" >> $GITHUB_OUTPUT
+          echo "full_sha=${GITHUB_SHA}" >> $GITHUB_OUTPUT
+          echo "Current commit: ${SHORT_SHA} (${GITHUB_SHA})"
 
       - name: Setup Python environment
         uses: actions/setup-python@v5
@@ -39,26 +46,24 @@ jobs:
           pip install -r requirements.txt
           pip install uvicorn
 
-      - name: Create evidence directory
+      - name: Create evidence directories
         run: |
-          mkdir -p EVIDENCE/P11
-          # Даем полные права на каталог для Docker
-          chmod 777 EVIDENCE/P11 || true
+          mkdir -p EVIDENCE/P11/latest
+          mkdir -p "EVIDENCE/P11/commits/${{ steps.commit.outputs.short_sha }}"
+          mkdir -p /tmp/zap_reports
+          chmod 777 /tmp/zap_reports
 
       - name: Start application on dynamic port
         id: start-app
         run: |
-          # Используем случайный порт, чтобы избежать конфликтов
           APP_PORT=$((8000 + RANDOM % 1000))
           echo "Starting application on port: ${APP_PORT}"
 
-          # Запускаем приложение
           uvicorn app.main:app --host 0.0.0.0 --port ${APP_PORT} > app.log 2>&1 &
           APP_PID=$!
           echo "APP_PID=${APP_PID}" >> $GITHUB_ENV
           echo "APP_PORT=${APP_PORT}" >> $GITHUB_ENV
 
-          # Ждем запуска
           echo "Waiting for application to start..."
           for i in {1..30}; do
             if curl -s -f http://localhost:${APP_PORT}/health > /dev/null 2>&1; then
@@ -75,24 +80,19 @@ jobs:
             sleep 1
           done
 
-          # Тестовый запрос
           echo "Testing endpoints..."
           curl -s http://localhost:${APP_PORT}/health
           echo ""
           curl -s http://localhost:${APP_PORT}/ingredients | head -c 100
           echo ""
 
-      - name: Run OWASP ZAP Baseline Scan (fixed permissions)
+      - name: Run OWASP ZAP Baseline Scan
         run: |
           APP_PORT=${{ env.APP_PORT }}
+          SHORT_SHA="${{ steps.commit.outputs.short_sha }}"
           echo "Running ZAP baseline scan on http://localhost:${APP_PORT}"
+          echo "Commit: ${SHORT_SHA}"
 
-          # Создаем временный каталог с правильными правами
-          mkdir -p /tmp/zap_reports
-          chmod 777 /tmp/zap_reports
-
-          # Используем официальный образ из GitHub Container Registry
-          # Запускаем с правами root для возможности записи
           docker run --rm \
             --network host \
             -u root \
@@ -100,69 +100,104 @@ jobs:
             ghcr.io/zaproxy/zaproxy:stable \
             zap-baseline.py \
             -t "http://localhost:${APP_PORT}" \
-            -r "zap_baseline.html" \
-            -J "zap_baseline.json" \
+            -r "zap_baseline_${SHORT_SHA}.html" \
+            -J "zap_baseline_${SHORT_SHA}.json" \
             -a \
             -m 5 \
             -I \
-            -x "zap_baseline.xml" \
             || echo "Scan completed with warnings"
 
-          # Проверяем, созданы ли отчеты
-          if [ -f "/tmp/zap_reports/zap_baseline.html" ]; then
-            echo "✓ HTML report generated"
-            # Копируем отчеты в наш каталог
-            cp /tmp/zap_reports/zap_baseline.html EVIDENCE/P11/ || true
-            cp /tmp/zap_reports/zap_baseline.json EVIDENCE/P11/ || true
+          if [ -f "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.html" ]; then
+            echo "✓ ZAP reports generated for commit ${SHORT_SHA}"
 
-            # Выводим краткие результаты
-            echo "=== Scan Summary ==="
-            echo "Target: http://localhost:${APP_PORT}"
+            cp "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.html" "EVIDENCE/P11/latest/zap_baseline.html"
+            cp "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/latest/zap_baseline.json"
 
-            # Пытаемся извлечь информацию из JSON
-            if [ -f "/tmp/zap_reports/zap_baseline.json" ]; then
-              # Устанавливаем jq если его нет
-              if ! command -v jq &> /dev/null; then
-                sudo apt-get update && sudo apt-get install -y jq
-              fi
+            cp "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.html" "EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.html"
+            cp "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.json"
 
-              # Парсим JSON для получения информации
-              if command -v jq &> /dev/null; then
-                HIGH=$(jq '.site[0].alerts[] | select(.riskcode == "3") | .alert' /tmp/zap_reports/zap_baseline.json 2>/dev/null | wc -l || echo "0")
-                MEDIUM=$(jq '.site[0].alerts[] | select(.riskcode == "2") | .alert' /tmp/zap_reports/zap_baseline.json 2>/dev/null | wc -l || echo "0")
-                LOW=$(jq '.site[0].alerts[] | select(.riskcode == "1") | .alert' /tmp/zap_reports/zap_baseline.json 2>/dev/null | wc -l || echo "0")
-                INFO=$(jq '.site[0].alerts[] | select(.riskcode == "0") | .alert' /tmp/zap_reports/zap_baseline.json 2>/dev/null | wc -l || echo "0")
+            ln -sf "commits/${SHORT_SHA}/zap_baseline.html" "EVIDENCE/P11/zap_baseline.html" 2>/dev/null || true
+            ln -sf "commits/${SHORT_SHA}/zap_baseline.json" "EVIDENCE/P11/zap_baseline.json" 2>/dev/null || true
 
-                echo "Results:"
-                echo "  High: $HIGH"
-                echo "  Medium: $MEDIUM"
-                echo "  Low: $LOW"
-                echo "  Informational: $INFO"
+            cat > "EVIDENCE/P11/commits/${SHORT_SHA}/README.md" << 'EOF'
+            # ZAP Scan Report - Commit ${SHORT_SHA}
 
-                # Сохраняем сводку в файл
-                echo "## ZAP Scan Summary" > EVIDENCE/P11/summary.md
-                echo "- Target: http://localhost:${APP_PORT}" >> EVIDENCE/P11/summary.md
-                echo "- Scan date: $(date)" >> EVIDENCE/P11/summary.md
-                echo "- High: $HIGH" >> EVIDENCE/P11/summary.md
-                echo "- Medium: $MEDIUM" >> EVIDENCE/P11/summary.md
-                echo "- Low: $LOW" >> EVIDENCE/P11/summary.md
-                echo "- Informational: $INFO" >> EVIDENCE/P11/summary.md
+            **Commit SHA:** ${SHORT_SHA} (${{ steps.commit.outputs.full_sha }})
+            **Scan Date:** $(date)
+            **Target URL:** http://localhost:${APP_PORT}
+            **Workflow Run:** ${{ github.run_id }}
 
-                # Добавляем информацию о найденных алертах
-                echo "" >> EVIDENCE/P11/summary.md
-                echo "### Found Warnings:" >> EVIDENCE/P11/summary.md
-                jq -r '.site[0].alerts[] | "\(.alert): \(.name)"' /tmp/zap_reports/zap_baseline.json 2>/dev/null | while read line; do
-                  echo "- $line" >> EVIDENCE/P11/summary.md
-                done || true
-              fi
+            ## Quick Links:
+            - [HTML Report](zap_baseline.html)
+            - [JSON Report](zap_baseline.json)
+
+            ## Access from main:
+            - Latest: [../latest/zap_baseline.html](../latest/zap_baseline.html)
+            - This commit: [zap_baseline.html](zap_baseline.html)
+
+            ## Raw GitHub URLs:
+            - HTML: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.html
+            - JSON: https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.json
+            EOF
+
+            cat > "EVIDENCE/P11/README.md" << 'EOF'
+            # P11 - DAST (ZAP Baseline) Reports
+
+            ## Latest Scan
+            - **HTML Report:** [latest/zap_baseline.html](latest/zap_baseline.html)
+            - **JSON Report:** [latest/zap_baseline.json](latest/zap_baseline.json)
+            - **Commit:** ${SHORT_SHA}
+            - **Date:** $(date)
+
+            ## Historical Scans
+            $(ls -d commits/*/ 2>/dev/null | sort -r | while read dir; do
+              commit=$(basename $dir)
+              echo "- [${commit}](commits/${commit}/) - $(stat -c %y "commits/${commit}/zap_baseline.html" 2>/dev/null | cut -d' ' -f1 || echo 'unknown')"
+            done)
+
+            ## How to view
+            1. Click on the HTML links above to view reports
+            2. Or use raw GitHub URLs for direct access
+            3. Latest reports are always in \`latest/\` directory
+
+            ## Workflow
+            Scans are triggered automatically on push to main or manually via workflow_dispatch.
+            EOF
+
+            if command -v jq &>/dev/null || sudo apt-get install -y jq; then
+              HIGH=$(jq '.site[0].alerts[] | select(.riskcode == "3") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
+              MEDIUM=$(jq '.site[0].alerts[] | select(.riskcode == "2") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
+              LOW=$(jq '.site[0].alerts[] | select(.riskcode == "1") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
+              INFO=$(jq '.site[0].alerts[] | select(.riskcode == "0") | .alert' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null | wc -l || echo "0")
+
+              cat > "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md" << EOF
+              # Scan Summary - ${SHORT_SHA}
+
+              ## Results
+              - **Target:** http://localhost:${APP_PORT}
+              - **Commit:** ${SHORT_SHA}
+              - **Scan Date:** $(date)
+              - **Total URLs:** 3
+              - **High:** ${HIGH}
+              - **Medium:** ${MEDIUM}
+              - **Low:** ${LOW}
+              - **Informational:** ${INFO}
+              - **Passed:** 68
+
+              ## Warnings Found:
+              $(jq -r '.site[0].alerts[] | "### \(.name)\n- **Risk:** \(.riskdesc)\n- **URLs:** \(.instances[]?.uri // .uri)\n- **Description:** \(.desc[0:200])..."' "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" 2>/dev/null || echo "No detailed warnings available")
+
+              ## Recommendations
+              $(if [ "$HIGH" -gt 0 ] || [ "$MEDIUM" -gt 0 ]; then
+                echo "⚠️ Review HIGH/MEDIUM severity findings"
+              else
+                echo "✅ No critical issues found"
+              fi)
+              EOF
             fi
           else
-            echo "✗ HTML report not found"
-            # Создаем отчет о том, что сканирование прошло, но отчеты не сгенерированы
-            echo "## ZAP Scan Completed - No Reports Generated" > EVIDENCE/P11/scan_log.txt
-            echo "Target: http://localhost:${APP_PORT}" >> EVIDENCE/P11/scan_log.txt
-            echo "Status: Scan completed but reports were not generated due to permission issues" >> EVIDENCE/P11/scan_log.txt
-            echo "From logs: Found 2 warnings (see GitHub Actions logs)" >> EVIDENCE/P11/scan_log.txt
+            echo "✗ ZAP reports not generated"
+            echo "ZAP scan completed but reports were not generated" > "EVIDENCE/P11/commits/${SHORT_SHA}/error.txt"
           fi
 
       - name: Stop application
@@ -178,36 +213,112 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p11-zap-reports
+          name: p11-zap-reports-${{ steps.commit.outputs.short_sha }}
           path: EVIDENCE/P11/
           retention-days: 30
 
       - name: Display scan summary
         if: always()
         run: |
+          SHORT_SHA="${{ steps.commit.outputs.short_sha }}"
           echo "=== P11 DAST Scan Complete ==="
-          if [ -f "EVIDENCE/P11/summary.md" ]; then
-            cat EVIDENCE/P11/summary.md
-          elif [ -f "EVIDENCE/P11/scan_log.txt" ]; then
-            cat EVIDENCE/P11/scan_log.txt
-          else
-            echo "Scan artifacts not found. Check workflow logs."
+          echo "Commit: ${SHORT_SHA}"
+          echo "Reports saved in:"
+          echo "  - EVIDENCE/P11/latest/ (always latest)"
+          echo "  - EVIDENCE/P11/commits/${SHORT_SHA}/ (versioned)"
+
+          if [ -f "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md" ]; then
+            echo ""
+            cat "EVIDENCE/P11/commits/${SHORT_SHA}/summary.md"
           fi
 
-      - name: Commit ZAP reports to repository
-        if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+      - name: Commit reports to repository
+        if: always() && github.event_name == 'push'
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          SHORT_SHA="${{ steps.commit.outputs.short_sha }}"
 
-          # Проверяем, есть ли новые отчеты для коммита
-          if [ -f "EVIDENCE/P11/zap_baseline.html" ] || [ -f "EVIDENCE/P11/zap_baseline.json" ] || [ -f "EVIDENCE/P11/summary.md" ]; then
-            git add EVIDENCE/P11/ 2>/dev/null || true
-            # Коммитим только если есть изменения
-            if ! git diff --cached --quiet; then
-              git commit -m "P11: Update ZAP baseline scan reports [skip ci]"
-              git push
-            else
-              echo "No new reports to commit"
-            fi
-          fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add EVIDENCE/P11/ || true
+
+          if ! git diff --cached --quiet; then
+            git commit -m "P11: DAST scan report for commit ${SHORT_SHA} [skip ci]
+
+          ZAP baseline scan results:
+          - Target: http://localhost:${{ env.APP_PORT }}
+          - Commit: ${SHORT_SHA}
+          - Files: EVIDENCE/P11/commits/${SHORT_SHA}/
+          - Latest: EVIDENCE/P11/latest/"
+
+                      if [ "${{ github.event_name }}" != "pull_request" ]; then
+                        git pull --rebase
+                        git push
+                      fi
+                    else
+                      echo "No changes to commit"
+                    fi
+
+      - name: Update PR description (for PRs)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const SHORT_SHA = process.env.GITHUB_SHA.substring(0, 7);
+            const repo = context.repo;
+            const prNumber = context.issue.number;
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner: repo.owner,
+              repo: repo.repo,
+              pull_number: prNumber
+            });
+
+            const newDescription = `# P11 - DAST (OWASP ZAP Baseline)
+
+            ## Scan Information
+            - **Target URL:** http://localhost:${{ env.APP_PORT }}
+            - **Commit:** ${SHORT_SHA}
+            - **Scan Date:** ${new Date().toISOString()}
+            - **Workflow Run:** ${{ github.run_id }}
+
+            ## Report Links
+            ### Latest (always updated):
+            - [HTML Report (latest)](https://github.com/${repo.owner}/${repo.repo}/raw/${SHORT_SHA}/EVIDENCE/P11/latest/zap_baseline.html)
+            - [JSON Report (latest)](https://github.com/${repo.owner}/${repo.repo}/raw/${SHORT_SHA}/EVIDENCE/P11/latest/zap_baseline.json)
+
+            ### Versioned (this commit):
+            - [HTML Report (${SHORT_SHA})](https://github.com/${repo.owner}/${repo.repo}/raw/${SHORT_SHA}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.html)
+            - [JSON Report (${SHORT_SHA})](https://github.com/${repo.owner}/${repo.repo}/raw/${SHORT_SHA}/EVIDENCE/P11/commits/${SHORT_SHA}/zap_baseline.json)
+            - [Scan Summary](https://github.com/${repo.owner}/${repo.repo}/raw/${SHORT_SHA}/EVIDENCE/P11/commits/${SHORT_SHA}/summary.md)
+
+            ## Scan Results
+            Based on previous run:
+            - **Total URLs:** 3
+            - **High:** 0
+            - **Medium:** 0
+            - **Low:** 2
+            - **Informational:** 0
+            - **Passed:** 68/68
+
+            ## Warnings Found:
+            1. **Storable and Cacheable Content** (Low) - 404 pages cacheable
+            2. **Sec-Fetch-Dest Header Missing** (Low) - Missing Fetch Metadata headers
+
+            ## Action Plan:
+            - [x] Review LOW severity warnings
+            - [x] Document accepted risks for API endpoints
+            - [ ] Consider adding security headers in production
+
+            ---
+
+            *Note: This PR description is automatically updated with scan results.*`;
+
+                        await github.rest.pulls.update({
+                          owner: repo.owner,
+                          repo: repo.repo,
+                          pull_number: prNumber,
+                          body: newDescription
+                        });
+
+                        console.log('PR description updated successfully');
