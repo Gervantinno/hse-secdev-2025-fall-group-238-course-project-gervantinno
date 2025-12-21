@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolExecutionNotifications": [
+            {
+              "descriptor": {
+                "id": "Pattern parse error"
+              },
+              "level": "error",
+              "message": {
+                "text": "Pattern parse error in rule security.semgrep.fastapi-rate-limit-missing:\n Invalid pattern for Python:\n--- pattern ---\n@app.post(\"/auth/login\")\ndef login(...):\n\n--- end pattern ---\nPattern error: Stdlib.Parsing.Parse_error\n"
+              }
+            }
+          ]
+        }
+      ],
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "Semgrep OSS",
+          "rules": [],
+          "semanticVersion": "1.73.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
