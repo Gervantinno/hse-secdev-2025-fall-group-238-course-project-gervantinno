@@ -16,51 +16,159 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  dast_p11:
+  zap-baseline:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Ensure evidence dirs
-        run: mkdir -p EVIDENCE/P11
-
-      - name: Setup Python
+      - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install uvicorn
 
-      - name: Run app
-        run: |
-          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
-          echo "Waiting for app to be ready..."
-          timeout 60 bash -c 'until curl -sf http://localhost:8000/health; do sleep 2; done'
+      - name: Create evidence directory
+        run: mkdir -p EVIDENCE/P11
 
-      - name: ZAP Baseline
+      - name: Start application on dynamic port
+        id: start-app
         run: |
+          # Используем случайный порт, чтобы избежать конфликтов
+          APP_PORT=$((8000 + RANDOM % 1000))
+          echo "Starting application on port: ${APP_PORT}"
+
+          # Запускаем приложение
+          uvicorn app.main:app --host 0.0.0.0 --port ${APP_PORT} > app.log 2>&1 &
+          APP_PID=$!
+          echo "APP_PID=${APP_PID}" >> $GITHUB_ENV
+          echo "APP_PORT=${APP_PORT}" >> $GITHUB_ENV
+
+          # Ждем запуска
+          echo "Waiting for application to start..."
+          for i in {1..30}; do
+            if curl -s -f http://localhost:${APP_PORT}/health > /dev/null 2>&1; then
+              echo "✓ Application started successfully on port ${APP_PORT}"
+              break
+            fi
+            if [ $i -eq 30 ]; then
+              echo "✗ Application failed to start within 30 seconds"
+              echo "Last 50 lines of log:"
+              tail -50 app.log
+              kill $APP_PID 2>/dev/null || true
+              exit 1
+            fi
+            sleep 1
+          done
+
+          # Тестовый запрос
+          echo "Testing endpoints..."
+          curl -s http://localhost:${APP_PORT}/health | jq -r .status || echo "No jq installed"
+          curl -s http://localhost:${APP_PORT}/ingredients | head -c 100 || echo "Failed to fetch ingredients"
+
+      - name: Install jq for JSON parsing
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run OWASP ZAP Baseline Scan
+        run: |
+          APP_PORT=${{ env.APP_PORT }}
+          echo "Running ZAP baseline scan on http://localhost:${APP_PORT}"
+
+          # Используем официальный образ из GitHub Container Registry
           docker run --rm \
-          --network host \
-          -v "${PWD}:/zap/wrk" \
-          ghcr.io/zaproxy/zap-stable:2.14.0 \
-          zap-baseline.py \
-              -t http://localhost:8000/openapi.json \
-              -f openapi \
-              -r zap_baseline.html \
-              -J zap_baseline.json \
-              -d || true
+            --network host \
+            -v $(pwd):/zap/wrk/:rw \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-baseline.py \
+            -t "http://localhost:${APP_PORT}" \
+            -r "zap_baseline.html" \
+            -J "zap_baseline.json" \
+            -a \
+            -m 5 \
+            -I \
+            || echo "Scan completed with warnings"
 
-          mv zap_baseline.* EVIDENCE/P11/ 2>/dev/null || true
+          # Проверяем, созданы ли отчеты
+          if [ -f "zap_baseline.html" ]; then
+            echo "✓ HTML report generated"
+            ls -la zap_baseline.html
+          else
+            echo "✗ HTML report not found"
+          fi
 
-      - name: Upload P11 evidence
+          if [ -f "zap_baseline.json" ]; then
+            echo "✓ JSON report generated"
+            # Извлекаем информацию об алертах
+            HIGH=$(jq '.site[0].alerts[] | select(.riskcode == "3") | .alert' zap_baseline.json | wc -l || echo "0")
+            MEDIUM=$(jq '.site[0].alerts[] | select(.riskcode == "2") | .alert' zap_baseline.json | wc -l || echo "0")
+            LOW=$(jq '.site[0].alerts[] | select(.riskcode == "1") | .alert' zap_baseline.json | wc -l || echo "0")
+            INFO=$(jq '.site[0].alerts[] | select(.riskcode == "0") | .alert' zap_baseline.json | wc -l || echo "0")
+
+            echo "Scan Results:"
+            echo "High: $HIGH, Medium: $MEDIUM, Low: $LOW, Informational: $INFO"
+
+            # Сохраняем сводку
+            echo "## ZAP Scan Summary" >> $GITHUB_STEP_SUMMARY
+            echo "- Target: http://localhost:${APP_PORT}" >> $GITHUB_STEP_SUMMARY
+            echo "- High: $HIGH" >> $GITHUB_STEP_SUMMARY
+            echo "- Medium: $MEDIUM" >> $GITHUB_STEP_SUMMARY
+            echo "- Low: $LOW" >> $GITHUB_STEP_SUMMARY
+            echo "- Informational: $INFO" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Stop application
+        if: always()
+        run: |
+          if [ -n "${{ env.APP_PID }}" ]; then
+            echo "Stopping application with PID: ${{ env.APP_PID }}"
+            kill ${{ env.APP_PID }} 2>/dev/null || true
+            sleep 2
+          fi
+
+      - name: Save ZAP reports
+        if: always()
+        run: |
+          # Перемещаем отчеты в EVIDENCE
+          mkdir -p EVIDENCE/P11
+          mv zap_baseline.html EVIDENCE/P11/ 2>/dev/null || echo "No HTML report to move"
+          mv zap_baseline.json EVIDENCE/P11/ 2>/dev/null || echo "No JSON report to move"
+
+          # Создаем README, если отчетов нет
+          if [ ! -f "EVIDENCE/P11/zap_baseline.html" ]; then
+            echo "No ZAP reports were generated. This might indicate:" > EVIDENCE/P11/README.md
+            echo "1. Application failed to start" >> EVIDENCE/P11/README.md
+            echo "2. ZAP scan timed out" >> EVIDENCE/P11/README.md
+            echo "3. Network issues" >> EVIDENCE/P11/README.md
+          fi
+
+      - name: Upload ZAP reports artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: P11_EVIDENCE
-          path: EVIDENCE/P11
+          name: p11-zap-reports
+          path: EVIDENCE/P11/
+          retention-days: 30
+
+      - name: Commit ZAP reports to repository
+        if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Добавляем только отчеты, если они есть
+          if [ -f "EVIDENCE/P11/zap_baseline.html" ] || [ -f "EVIDENCE/P11/zap_baseline.json" ]; then
+            git add EVIDENCE/P11/ || true
+            git commit -m "P11: Update ZAP baseline scan reports [skip ci]" || echo "No changes to commit"
+            git push || echo "Push failed or no changes"
+          fi
