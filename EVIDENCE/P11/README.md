@@ -1,18 +1,12 @@
-# P11 - DAST (ZAP Baseline) Reports
+# P11 - DAST (OWASP ZAP Baseline) Reports
 
-## Latest Scan
-- **HTML Report:** [latest/zap_baseline.html](latest/zap_baseline.html)
-- **JSON Report:** [latest/zap_baseline.json](latest/zap_baseline.json)
-- **Commit:** ebba59c
-- **Date:** Sun Dec 21 15:03:17 UTC 2025
+## Latest Scan (4dfd70d)
+- **ZAP HTML Report:** [zap_baseline_latest.html](zap_baseline_latest.html) (from [zap_baseline_4dfd70d.html](zap_baseline_4dfd70d.html))
+- **ZAP JSON Report:** [zap_baseline_latest.json](zap_baseline_latest.json) (from [zap_baseline_4dfd70d.json](zap_baseline_4dfd70d.json))
+- **Scan Summary:** [summary_latest.md](summary_latest.md) (from [summary_4dfd70d.md](summary_4dfd70d.md))
+- **Scan Date:** Fri Dec 26 13:19:23 UTC 2025
+- **Target:** http://localhost:8312
 
-## Historical Scans
-- [ebba59c](commits/ebba59c/) - 2025-12-21
-
-## How to view
-1. Click on the HTML links above to view reports
-2. Or use raw GitHub URLs for direct access
-3. Latest reports are always in `latest/` directory
-
-## Workflow
-Scans are triggered automatically on push to main or manually via workflow_dispatch.
+## Available Reports:
+| File | Description | Commit |
+|------|-------------|--------|
