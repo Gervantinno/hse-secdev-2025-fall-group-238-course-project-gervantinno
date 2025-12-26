@@ -1,0 +1,42 @@
+title = "Recipe Manager - Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Project-specific allowlist for Recipe Manager"
+paths = [
+  "EVIDENCE/",              # Scan reports and artifacts
+  "**/*.md",                # Documentation files
+  "**/test_*.py",           # Test files
+  "**/tests/**",            # Test directories
+  ".github/workflows/*.yml", # GitHub Actions workflows
+]
+
+commits = [
+  "initial-commit",         # Initial project setup
+]
+
+regexes = [
+  '''TEST_SECRET_DO_NOT_USE''',          # Test markers
+  '''dev-secret-key-change-in-production''',  # Development JWT secret (documented)
+  '''localhost''',                       # Local development
+  '''127\.0\.0\.1''',                    # Loopback addresses
+  '''postgresql://.*@localhost''',       # Local PostgreSQL
+  '''sqlite:///.*\.db''',                # SQLite development databases
+  '''#.*(TODO|FIXME|XXX).*''',           # Code comments with markers
+]
+
+[[rules]]
+id = "recipe-manager-jwt-secret"
+description = "Recipe Manager JWT Secret Pattern"
+regex = '''SECRET_KEY\s*=\s*["'][^"']{20,}["']'''
+tags = ["jwt", "secret", "recipe-manager"]
+entropy = 3.5
+
+[[rules]]
+id = "fastapi-database-url"
+description = "FastAPI Database URL with credentials"
+regex = '''(postgres|mysql|sqlite)://[^@]+@[^\s]+'''
+tags = ["database", "credentials"]
+entropy = 4.0

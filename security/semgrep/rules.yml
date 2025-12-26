@@ -1,0 +1,107 @@
+rules:
+  - id: fastapi-sql-injection
+    patterns:
+      - pattern: f"SELECT ... FROM ... WHERE id = $USER_INPUT"
+      - pattern: f"INSERT INTO ... VALUES ($USER_INPUT)"
+    message: "Potential SQL injection in raw SQL query"
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: "CWE-89: SQL Injection"
+      asvs: "5.3.4"
+
+  - id: fastapi-jwt-hardcoded-secret
+    patterns:
+      - pattern: |
+          SECRET_KEY = "..."
+    message: "Hardcoded JWT secret detected. Use environment variables or secret management."
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: "CWE-798: Use of Hard-coded Credentials"
+
+  - id: fastapi-cors-misconfiguration
+    patterns:
+      - pattern: |
+          CORSMiddleware(
+            ...,
+            allow_origins=["*"],
+            ...
+          )
+    message: "CORS configured to allow all origins (*). This is insecure for production."
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: "CWE-942: Permissive Cross-domain Policy"
+
+  - id: fastapi-rate-limit-missing
+    patterns:
+      - pattern: |
+          @app.post(...)
+          def login(...):
+            ...
+    message: "Authentication endpoints should have rate limiting to prevent brute force."
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: security
+      asvs: "2.5.1"
+
+  - id: recipe-manager-ingredient-limit
+    patterns:
+      - pattern: |
+          if len(recipe.ingredients) > $MAX:
+            raise HTTPException(...)
+    message: "Check for ingredient limit (NFR-13) is present"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: business-logic
+      requirement: "NFR-13"
+
+  - id: fastapi-pydantic-validator-missing
+    patterns:
+      - pattern: |
+          class $MODEL(BaseModel):
+            $FIELD: $TYPE
+    message: "Consider adding Pydantic validators for input validation"
+    languages: [python]
+    severity: INFO
+    metadata:
+      category: best-practice
+
+  - id: python-logging-info-leak
+    patterns:
+      - pattern: |
+          logger.error(f"User {$USER_ID} failed login with password: {$PASSWORD}")
+    message: "Potential sensitive information leakage in logs"
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: "CWE-532: Information Leak Through Log Files"
+
+  - id: auth-hardcoded-dev-secret
+    languages: [python]
+    message: "Hard-coded development JWT secret detected — use secrets backend (get_secret) or env var."
+    severity: ERROR
+    patterns:
+      - pattern: |
+          SECRET_KEY = "dev-secret-key-change-in-production"
+    metadata:
+      category: security
+      cwe: "CWE-798"
+
+  - id: py-unsafe-html-echo
+    languages: [python]
+    message: "Potentially unsafe HTMLResponse with direct user data interpolation"
+    severity: WARNING
+    patterns:
+      - pattern: |
+          HTMLResponse("...{$X}...")
+    metadata:
+      category: security
+      cwe: "CWE-79"

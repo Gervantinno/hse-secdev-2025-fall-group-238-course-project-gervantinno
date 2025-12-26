@@ -1,0 +1,358 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolExecutionNotifications": [
+            {
+              "descriptor": {
+                "id": "Syntax error"
+              },
+              "level": "warning",
+              "message": {
+                "text": "Syntax error at line Dockerfile:52:\n `--from=build` was unexpected"
+              }
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "394c0d6d3d73e7aa6f3649142319dcae6b7e18da0789e101ec9e2e3320f97bc00a09ceb4709ece342c033d69bce456d9723e1938c85b94c606b52befae99bc2d_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/main.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 66,
+                  "endLine": 194,
+                  "snippet": {
+                    "text": "@app.post(\"/auth/login\", response_model=schemas.Token)\ndef login(credentials: schemas.UserLogin, db: Session = Depends(get_db)):\n    user = (\n        db.query(models.User)\n        .filter(models.User.username == credentials.username)\n        .first()\n    )\n    if not user or not verify_password(credentials.password, user.hashed_password):\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Incorrect username or password\",\n            headers={\"WWW-Authenticate\": \"Bearer\"},\n        )\n\n    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)\n    access_token = create_access_token(\n        data={\"sub\": user.username}, expires_delta=access_token_expires\n    )\n    return {\"access_token\": access_token, \"token_type\": \"bearer\"}"
+                  },
+                  "startColumn": 1,
+                  "startLine": 176
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Authentication endpoints should have rate limiting to prevent brute force."
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-rate-limit-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "6df610cf624cfac4c16375b68ef00f92de060dd3f56f14d05b5c889a84ad6e722a154d9bb50c2bbe377f9b728460550e557f3a3a9f49b0a6345382b52667dc2b_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/main.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 10,
+                  "endLine": 229,
+                  "snippet": {
+                    "text": "    if len(recipe.ingredients) > 30:  # NFR-13\n        raise HTTPException(\n            status_code=400, detail=\"Recipe cannot have more than 30 ingredients\"\n        )"
+                  },
+                  "startColumn": 5,
+                  "startLine": 226
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Check for ingredient limit (NFR-13) is present"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.recipe-manager-ingredient-limit"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "297038f9674513a04126833673046a84bc648bbe481567c531cd90517439e35abe0ea93f17aeb358d9bc9997019a592dbf918fb83afe1d99769e5a35146a8970_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 9,
+                  "snippet": {
+                    "text": "class UserBase(BaseModel):\n    username: constr(min_length=3, max_length=50)\n    email: EmailStr"
+                  },
+                  "startColumn": 1,
+                  "startLine": 7
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "6e1f3f249f4108f42df5dc57a9d0eebfb073bc015c0b90b08f74ceb60dd7ff9703c4835bc0ae9f7cd0a2718b8831f96001d7e7b42ac913d43e7d5d60bb24de21_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 18,
+                  "snippet": {
+                    "text": "class UserLogin(BaseModel):\n    username: str\n    password: str"
+                  },
+                  "startColumn": 1,
+                  "startLine": 16
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "291aa74b72cb0d6d17d647997f7c4232b75415e05a01ada8c2474ffe981573ee85f2c47290e03da7e9de7945953a439831e874d6d3fa2c4aea9924b3873ea426_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 20,
+                  "endLine": 32,
+                  "snippet": {
+                    "text": "class Token(BaseModel):\n    access_token: str\n    token_type: str"
+                  },
+                  "startColumn": 1,
+                  "startLine": 30
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "44031e0e6ef5fb9285eefe0023953eb57e50734c10910a828bad34fa1a53e1ff15def6877cf5c62edcb31d67b829950c339a7f6a6756fbad729401a655ee7895_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 47,
+                  "endLine": 40,
+                  "snippet": {
+                    "text": "class IngredientBase(BaseModel):\n    name: constr(min_length=1, max_length=100)"
+                  },
+                  "startColumn": 1,
+                  "startLine": 39
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "b8353b1d0ace3ba699feb3ac2433f326768f16f22eb61e6bed384cd8aac7bd6d11c8f340ca655bd74233f2405c2c0118f65a86a33081764ae986b9932cd329be_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 46,
+                  "endLine": 58,
+                  "snippet": {
+                    "text": "class RecipeIngredientBase(BaseModel):\n    ingredient_id: int\n    amount: float = Field(gt=0)\n    unit: constr(min_length=1, max_length=20)"
+                  },
+                  "startColumn": 1,
+                  "startLine": 55
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "fee1376e743d6a8d050c714e0695b44a78b21aeb590f17923a9aca89728875493f37b73e8bf93192f1f22fe3da889eb5a7f8d31983c18d9945b64b7bf9c0e8fe_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 49,
+                  "endLine": 74,
+                  "snippet": {
+                    "text": "class RecipeBase(BaseModel):\n    title: constr(min_length=1, max_length=100)\n    steps: constr(min_length=1, max_length=2000)"
+                  },
+                  "startColumn": 1,
+                  "startLine": 72
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        },
+        {
+          "fingerprints": {
+            "matchBasedId/v1": "63f57830eb04d7b01e531420e489dc4294167339e336d33cb876a741996e3c04b49dd44d9acea4ae4a6bfc51959e48e44d63794dbeb2314ada54c8a66d40e3d5_0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app/schemas.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 98,
+                  "snippet": {
+                    "text": "class RecipeList(BaseModel):\n    items: List[Recipe]\n    total: int\n    offset: int\n    limit: int"
+                  },
+                  "startColumn": 1,
+                  "startLine": 94
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Consider adding Pydantic validators for input validation"
+          },
+          "properties": {},
+          "ruleId": "security.semgrep.fastapi-pydantic-validator-missing"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "Semgrep OSS",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Check for ingredient limit (NFR-13) is present"
+              },
+              "help": {
+                "markdown": "Check for ingredient limit (NFR-13) is present\n\n#### \ud83d\udc8e Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>",
+                "text": "Check for ingredient limit (NFR-13) is present\n\ud83d\udc8e Enable cross-file analysis and Pro rules for free at sg.run/pro"
+              },
+              "id": "security.semgrep.recipe-manager-ingredient-limit",
+              "name": "security.semgrep.recipe-manager-ingredient-limit",
+              "properties": {
+                "precision": "very-high",
+                "tags": []
+              },
+              "shortDescription": {
+                "text": "Semgrep Finding: security.semgrep.recipe-manager-ingredient-limit"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Consider adding Pydantic validators for input validation"
+              },
+              "help": {
+                "markdown": "Consider adding Pydantic validators for input validation\n\n#### \ud83d\udc8e Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>",
+                "text": "Consider adding Pydantic validators for input validation\n\ud83d\udc8e Enable cross-file analysis and Pro rules for free at sg.run/pro"
+              },
+              "id": "security.semgrep.fastapi-pydantic-validator-missing",
+              "name": "security.semgrep.fastapi-pydantic-validator-missing",
+              "properties": {
+                "precision": "very-high",
+                "tags": []
+              },
+              "shortDescription": {
+                "text": "Semgrep Finding: security.semgrep.fastapi-pydantic-validator-missing"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Authentication endpoints should have rate limiting to prevent brute force."
+              },
+              "help": {
+                "markdown": "Authentication endpoints should have rate limiting to prevent brute force.\n\n#### \ud83d\udc8e Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>",
+                "text": "Authentication endpoints should have rate limiting to prevent brute force.\n\ud83d\udc8e Enable cross-file analysis and Pro rules for free at sg.run/pro"
+              },
+              "id": "security.semgrep.fastapi-rate-limit-missing",
+              "name": "security.semgrep.fastapi-rate-limit-missing",
+              "properties": {
+                "precision": "very-high",
+                "tags": []
+              },
+              "shortDescription": {
+                "text": "Semgrep Finding: security.semgrep.fastapi-rate-limit-missing"
+              }
+            }
+          ],
+          "semanticVersion": "1.73.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
