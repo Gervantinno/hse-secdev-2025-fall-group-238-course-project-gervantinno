@@ -35,13 +35,10 @@ jobs:
           echo "full_sha=${GITHUB_SHA}" >> $GITHUB_OUTPUT
           echo "Current commit: ${SHORT_SHA} (${GITHUB_SHA})"
 
-      - name: Clean old evidence
+      - name: Clean old evidence directory
         run: |
-          # Удаляем старые папки commits и latest, если они есть
-          rm -rf EVIDENCE/P11/commits EVIDENCE/P11/latest 2>/dev/null || true
-          # Удаляем старые симлинки без кода коммита
-          rm -f EVIDENCE/P11/zap_baseline.html EVIDENCE/P11/zap_baseline.json 2>/dev/null || true
-          # Создаем чистую директорию
+          # Полностью очищаем папку EVIDENCE/P11 перед началом
+          rm -rf EVIDENCE/P11
           mkdir -p EVIDENCE/P11
 
       - name: Setup Python environment
@@ -122,8 +119,8 @@ jobs:
             cp "/tmp/zap_reports/zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/zap_baseline_${SHORT_SHA}.json"
 
             # Создаем симлинки latest
-            ln -sf "zap_baseline_${SHORT_SHA}.html" "EVIDENCE/P11/zap_baseline_latest.html" 2>/dev/null || true
-            ln -sf "zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/zap_baseline_latest.json" 2>/dev/null || true
+            ln -sf "zap_baseline_${SHORT_SHA}.html" "EVIDENCE/P11/zap_baseline_latest.html"
+            ln -sf "zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/zap_baseline_latest.json"
 
             # Генерируем summary с анализом
             if command -v jq &>/dev/null || sudo apt-get install -y jq 2>/dev/null; then
@@ -172,7 +169,7 @@ jobs:
               echo "**Justification:** The cacheable content is limited to 404 error pages and robots.txt which contain no sensitive data. This will be addressed in production deployment with proper Cache-Control headers." >> "EVIDENCE/P11/summary_${SHORT_SHA}.md"
               
               # Создаем симлинк для summary
-              ln -sf "summary_${SHORT_SHA}.md" "EVIDENCE/P11/summary_latest.md" 2>/dev/null || true
+              ln -sf "summary_${SHORT_SHA}.md" "EVIDENCE/P11/summary_latest.md"
             fi
           else
             echo "✗ ZAP reports not generated"
@@ -207,7 +204,7 @@ jobs:
           echo "| File | Description | Commit |" >> "EVIDENCE/P11/README.md"
           echo "|------|-------------|--------|" >> "EVIDENCE/P11/README.md"
           
-          # Только файлы с кодом текущего коммита
+          # Только файлы текущего коммита
           echo "| [zap_baseline_${SHORT_SHA}.html](zap_baseline_${SHORT_SHA}.html) | ZAP HTML report | ${SHORT_SHA} |" >> "EVIDENCE/P11/README.md"
           echo "| [zap_baseline_${SHORT_SHA}.json](zap_baseline_${SHORT_SHA}.json) | ZAP JSON report | ${SHORT_SHA} |" >> "EVIDENCE/P11/README.md"
           echo "| [summary_${SHORT_SHA}.md](summary_${SHORT_SHA}.md) | Scan summary | ${SHORT_SHA} |" >> "EVIDENCE/P11/README.md"
@@ -288,23 +285,18 @@ jobs:
             CHANGES=true
           fi
           
-          # Обновляем симлинки latest (удаляем старые, создаем новые)
-          rm -f "EVIDENCE/P11/zap_baseline_latest.html" "EVIDENCE/P11/zap_baseline_latest.json" "EVIDENCE/P11/summary_latest.md" 2>/dev/null || true
-          
+          # Добавляем симлинки latest
           if [ -f "EVIDENCE/P11/zap_baseline_${SHORT_SHA}.html" ]; then
-            ln -s "zap_baseline_${SHORT_SHA}.html" "EVIDENCE/P11/zap_baseline_latest.html"
             git add "EVIDENCE/P11/zap_baseline_latest.html" || true
             CHANGES=true
           fi
           
           if [ -f "EVIDENCE/P11/zap_baseline_${SHORT_SHA}.json" ]; then
-            ln -s "zap_baseline_${SHORT_SHA}.json" "EVIDENCE/P11/zap_baseline_latest.json"
             git add "EVIDENCE/P11/zap_baseline_latest.json" || true
             CHANGES=true
           fi
           
           if [ -f "EVIDENCE/P11/summary_${SHORT_SHA}.md" ]; then
-            ln -s "summary_${SHORT_SHA}.md" "EVIDENCE/P11/summary_latest.md"
             git add "EVIDENCE/P11/summary_latest.md" || true
             CHANGES=true
           fi
