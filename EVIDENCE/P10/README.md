@@ -1,16 +1,23 @@
 # P10 - SAST & Secrets Scan Reports
 
-## Latest Scan
-- **Semgrep Report:** [latest/semgrep.sarif](latest/semgrep.sarif)
-- **Gitleaks Report:** [latest/gitleaks.json](latest/gitleaks.json)
-- **Scan Summary:** [commits/104c091/summary.md](commits/104c091/summary.md)
-- **Commit:** 104c091
-- **Date:** Sun Dec 21 15:55:03 UTC 2025
+## Latest Scan (71b36f5)
+- **Semgrep SARIF:** [semgrep-latest.sarif](semgrep-latest.sarif) (from [semgrep-71b36f5.sarif](semgrep-71b36f5.sarif))
+- **Gitleaks JSON:** [gitleaks-latest.json](gitleaks-latest.json) (from [gitleaks-71b36f5.json](gitleaks-71b36f5.json))
+- **Scan Summary:** [summary-latest.md](summary-latest.md) (from [summary-71b36f5.md](summary-71b36f5.md))
+- **Scan Date:** Fri Dec 26 12:41:36 UTC 2025
 
-## Historical Scans
-- [104c091](commits/104c091/) - 2025-12-21
+## Available Reports:
+| File | Description |
+|------|-------------|
+| [gitleaks-71b36f5.json](gitleaks-71b36f5.json) | Gitleaks secrets report |
+| [gitleaks.json](gitleaks.json) | Gitleaks secrets report |
+| [semgrep-71b36f5.sarif](semgrep-71b36f5.sarif) | Semgrep SAST report |
+| [semgrep-latest.sarif](semgrep-latest.sarif) | Semgrep SAST report |
+| [semgrep.sarif](semgrep.sarif) | Semgrep SAST report |
+| [summary-71b36f5.md](summary-71b36f5.md) | Scan summary |
+| [summary-latest.md](summary-latest.md) | Scan summary |
 
 ## How to View Reports
-1. **Semgrep SARIF**: Use GitHub Code Scanning or SARIF viewer
-2. **Gitleaks JSON**: Inspect JSON or use Gitleaks CLI
-3. **Raw GitHub URLs**: Click on links above for direct access
+1. Click on the links above to view reports in GitHub
+2. For SARIF files, use GitHub Code Scanning or a SARIF viewer
+3. JSON reports can be viewed directly or parsed with jq
